@@ -1,0 +1,277 @@
+{
+ "type": "result",
+ "run_id": "fixture-run",
+ "session_id": "fixture-session",
+ "request_type": "new_evaluation",
+ "agents": [
+  "regulations",
+  "competitive_analysis",
+  "model_stack_analysis"
+ ],
+ "summary": "### Regulations\nRegulatory classification: transparency_obligated  \nThe AI feature that answers billing questions does not fall under any provisions of Annex III and is therefore not classified as high-risk. However, Article 50(1) of the EU AI Act governs it to the extent that the feature interacts directly with natural persons. This obliges the provider to inform the person they are interacting with an AI system, unless it is already obvious in context. No other applicable or specific obligations for this feature were identified in the retrieved provisions.  \nThis is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications.\n\nApplicability: Under Article 113, the provisions cited here take effect on these dates: 2 August 2026 (Article 50; the general application date).\n\n### Competitive Analysis\n#### Intercom Fin (Intercom)  \n- Accuracy, latency, and pricing claims: No verified source; the cited page does not support these claims (the cited page does not exist).  \n  - Accuracy source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Latency source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Pricing source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n- Suitable for businesses needing in-app billing support and contextual assistance, but potentially pricier than simpler setups if resolution volumes are high.\n\n#### Zendesk AI (Zendesk)  \n- Accuracy, latency, and pricing claims: No verified source; the cited page does not support these claims (the cited page does not exist).  \n  - Accuracy source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Latency source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Pricing source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n- Ideal for teams already using Zendesk for broader helpdesk needs, though workflow-based latency may be less agile for live billing queries.\n\n#### Ada (Ada)  \n- Accuracy, latency, and pricing claims: No verified source; the cited page does not support these claims (the cited page does not exist).  \n  - Accuracy source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Latency source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n  - Pricing source: [https://aerochat.ai/saas-customer-support/](https://aerochat.ai/saas-customer-support/)  \n- Best for businesses automating billing queries at scale across multiple languages, but unlikely to match cost-effectiveness for smaller-scale SaaS operations.\n\n### Model Stack Options\n#### Shortlist  \n##### Anthropic Claude Sonnet 5.5 (Medium, Default Fallback)  \n- Yearly cost: $1.3K  \n- Latency: 669ms  \n- General quality percentile: 92.2  \n- Trade-offs: Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.  \n- Comparison: Compared with the other options shown, it ranks highest in general quality (92.2, against 88.7 for the next); starts replying 173ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs $1.3K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66).  \n\n##### Anthropic Claude Sonnet 5.5 (Low, Default Fallback)  \n- Yearly cost: $1.3K  \n- Latency: 719ms  \n- General quality percentile: 88.7  \n- Trade-offs: Thinks before it answers; the low effort setting controls how long it may think. It meets the latency target and fits the budget.  \n- Comparison: Compared with the other options shown, it ranks 3.5 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying 223ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs $1.3K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66).  \n\n##### OpenAI gpt-5.6-terra (Non-reasoning)  \n- Yearly cost: $1.4K  \n- Latency: 686ms  \n- General quality percentile: 68.8  \n- Trade-offs: Answers directly, without a separate thinking step. It meets the latency target and fits the budget.  \n- Comparison: Compared with the other options shown, it ranks 23.4 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying 190ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs $1.4K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66).  \n\n##### OpenAI gpt-6-luna (Non-reasoning)  \n- Yearly cost: $66  \n- Latency: 773ms  \n- General quality percentile: 64.3  \n- Trade-offs: Answers directly, without a separate thinking step. It meets the latency target and fits the budget.  \n- Comparison: Compared with the other options shown, it ranks 27.9 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying 277ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs the least ($66 a year).  \n\n##### Anthropic Claude Haiku 4.5 (Non-reasoning)  \n- Yearly cost: $660  \n- Latency: 496ms  \n- General quality percentile: 59.0  \n- Trade-offs: Answers directly, without a separate thinking step. It meets the latency target and fits the budget.  \n- Comparison: Compared with the other options shown, it ranks 33.2 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying soonest (496ms); costs $594 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66).  \n\n#### Near Miss  \nThese options miss the latency target slightly (<900ms) but fit the budget.  \n##### OpenAI gpt-5.6-terra (Medium)  \n- Yearly cost: $1.4K  \n- Latency: 1196ms  \n- General quality percentile: 83.7  \n\n##### OpenAI gpt-5.6-terra (Low)  \n- Yearly cost: $1.4K  \n- Latency: 1247ms  \n- General quality percentile: 80.7  \n\n### Overview  \n5 of 102 configurations meet the latency and budget targets you gave. Latency here means the time until the first answer token arrives (the reply starts appearing). 66 could not be compared on latency because no timing data exists for them. Costs assume 20,000 requests a month, because no volume was given, with 1,500 input and 250 output tokens each (token sizes estimated from the kind of feature).  \n\n### Warnings  \n- Token sizes were outside the typical range for a chat assistant and were moved to the nearest end of it (input tokens 200 -> 1,500).  \n- The feature was read as a chat assistant but its reply style as a single response; treated as a streamed chat.  \n- OpenAI: rejected 3 of 40 extracted models (gpt-6-1-sol: model name not on the page; davinci-002: not a text-generation model (by name); babbage-002: not a text-generation model (by name)).  \n- Google: rejected 15 of 23 extracted models (gemini-3.5-flash-lite: input price not found with the model's name on the page; gemini-3.8-live: not a text-generation model (by name); gemini-3.8-live-extended-thinking: not a text-generation model (by name); gemini-3.1-flash: model name not on the page).  \n\nAttribution: Latency and quality data: Artificial Analysis (https://artificialanalysis.ai/)",
+ "feature": "an AI feature that answers billing questions",
+ "chips": {
+  "latency": "<900ms",
+  "budget": "$40k per year",
+  "volume": {
+   "requests_per_month": 20000,
+   "basis": "assumed"
+  },
+  "reply_style": "streamed chat",
+  "accuracy_target_given": false
+ },
+ "verdicts": [
+  {
+   "key": "legal",
+   "heading": "LEGAL",
+   "title": "Transparency duty",
+   "detail": "EU AI Act, Article 50(1)",
+   "extra": "Applies from 2 August 2026",
+   "tone": "notice"
+  },
+  {
+   "key": "recommended",
+   "heading": "RECOMMENDED",
+   "title": "Anthropic Claude Sonnet 5.5 (Medium, Default Fallback)",
+   "detail": "$110/month \u00b7 669 ms to the first words",
+   "extra": "2 other options below",
+   "tone": "good"
+  },
+  {
+   "key": "market",
+   "heading": "MARKET",
+   "title": "3 competitors researched",
+   "detail": "0 of 9 claims verified",
+   "extra": "No claim could be backed by its source",
+   "tone": "caution"
+  }
+ ],
+ "regulatory": {
+  "status": "checked",
+  "classification": "transparency_obligated",
+  "title": "Transparency duty under the EU AI Act",
+  "short": "Transparency duty",
+  "tone": "notice",
+  "answer": "The AI feature that answers billing questions does not fall under any provisions of Annex III and is therefore not classified as high-risk. However, Article 50(1) governs it to the extent that the feature interacts directly with natural persons. This obliges the provider to inform the person they are interacting with an AI system, unless it is already obvious in context. No other applicable or specific obligations for this feature were identified in the retrieved provisions.",
+  "applicability_status": "Under Article 113, the provisions cited here take effect on these dates: 2 August 2026 (Article 50; the general application date).",
+  "dates": [
+   "2 August 2026"
+  ],
+  "citations": [
+   "Article 50(1)"
+  ],
+  "quotes": [
+   {
+    "label": "Article 50(1)",
+    "title": "Transparency obligations for providers and deployers of certain AI systems",
+    "text": "1. Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect, taking into account the circumstances and the context of use. This obligation shall not apply to AI systems authorised by law to detect, prevent, investigate or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms of third parties, unless those systems are available for the public to report a criminal offence.",
+    "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32024R1689#art_50"
+   }
+  ],
+  "missing_inputs": [],
+  "disclaimer": "This is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications."
+ },
+ "withheld": false,
+ "cards": [
+  {
+   "slot": "A",
+   "badge": "Recommended",
+   "tone": "good",
+   "option_id": "opt18",
+   "model": "Anthropic Claude Sonnet 5.5 (Medium, Default Fallback)",
+   "yearly_cost_usd": 1320,
+   "monthly_cost_usd": 110.0,
+   "latency_ms": 669,
+   "latency_kind": "to the first words",
+   "quality_percentile": 92.2,
+   "quality_is_proxy": true,
+   "verdicts": {
+    "latency": "meets",
+    "cost": "meets"
+   },
+   "misses": [],
+   "trade_offs": "Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.",
+   "comparison": "Compared with the other options shown, it ranks highest in general quality (92.2, against 88.7 for the next); starts replying 173ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs $1.3K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66).",
+   "learned": []
+  },
+  {
+   "slot": "B",
+   "badge": "Lowest cost",
+   "tone": "neutral",
+   "option_id": "opt39",
+   "model": "OpenAI gpt-6-luna (Non-reasoning)",
+   "yearly_cost_usd": 66,
+   "monthly_cost_usd": 5.5,
+   "latency_ms": 773,
+   "latency_kind": "to the first words",
+   "quality_percentile": 64.3,
+   "quality_is_proxy": true,
+   "verdicts": {
+    "latency": "meets",
+    "cost": "meets"
+   },
+   "misses": [],
+   "trade_offs": "Answers directly, without a separate thinking step. It meets the latency target and fits the budget.",
+   "comparison": "Compared with the other options shown, it ranks 27.9 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying 277ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs the least ($66 a year).",
+   "learned": []
+  },
+  {
+   "slot": "C",
+   "badge": "Caution",
+   "tone": "caution",
+   "option_id": "opt58",
+   "model": "OpenAI gpt-5.6-terra (Medium)",
+   "yearly_cost_usd": 1440,
+   "monthly_cost_usd": 120.0,
+   "latency_ms": 1196,
+   "latency_kind": "to the first words",
+   "quality_percentile": 83.7,
+   "quality_is_proxy": true,
+   "verdicts": {
+    "latency": "misses",
+    "cost": "meets"
+   },
+   "misses": [
+    "Misses latency by 296 ms (1,196 ms against 900 ms)"
+   ],
+   "trade_offs": "Thinks before it answers; the medium effort setting controls how long it may think. It misses the latency target and fits the budget.",
+   "comparison": "Compared with the other options shown, it ranks 8.5 percentile points below the highest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 92.2) in general quality; starts replying 700ms later than the fastest (Anthropic Claude Haiku 4.5 (Non-reasoning), 496ms); costs $1.4K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $66); misses the latency target by 296ms (1196ms against 900ms).",
+   "learned": []
+  }
+ ],
+ "overview": "5 of 102 configurations meet the latency and budget targets you gave. Latency here means the time until the first answer token arrives (the reply starts appearing). 66 could not be compared on latency because no timing data exists for them. Costs assume 20,000 requests a month, because no volume was given, with 1,500 input and 250 output tokens each (token sizes estimated from the kind of feature).",
+ "reading": {
+  "compared": 102,
+  "meet_all": 5,
+  "latency_unknown": 66,
+  "accuracy_note": "No public benchmark measures accuracy on your task. Quality percentiles are a general ranking; test the shortlist on your own examples.",
+  "latency_means": "time until the first answer token arrives (the reply starts appearing)",
+  "assumptions": {
+   "requests_per_month": 20000,
+   "volume_basis": "assumed",
+   "avg_input_tokens": 1500,
+   "avg_output_tokens": 250,
+   "token_basis": "estimated",
+   "reply_style": "streamed_chat"
+  },
+  "caveats": [],
+  "attribution": "Latency and quality data: Artificial Analysis (https://artificialanalysis.ai/)"
+ },
+ "volume_assumption": {
+  "requests_per_month": 20000,
+  "avg_input_tokens": 1500,
+  "avg_output_tokens": 250,
+  "volume_basis": "assumed",
+  "token_basis": "estimated",
+  "reason": "The feature involves answering billing questions, which typically requires a conversational interface with moderate input and output tokens. The request volume (20,000 a month) was not given, so a modest default was assumed. The model's token estimate was below or above the typical range for this kind of feature, so the nearest end of that range was used.",
+  "basis": "assumed"
+ },
+ "caveats": [],
+ "accuracy_note": "No public benchmark measures accuracy on your task. Quality percentiles are a general ranking; test the shortlist on your own examples.",
+ "attribution": "Latency and quality data: Artificial Analysis (https://artificialanalysis.ai/)",
+ "competitors": [
+  {
+   "product": "Intercom Fin",
+   "vendor": "Intercom",
+   "cited_hosts": [
+    "aerochat.ai"
+   ],
+   "claims": [
+    {
+     "field": "pricing",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "accuracy",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "latency",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    }
+   ]
+  },
+  {
+   "product": "Zendesk AI",
+   "vendor": "Zendesk",
+   "cited_hosts": [
+    "aerochat.ai"
+   ],
+   "claims": [
+    {
+     "field": "pricing",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "accuracy",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "latency",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    }
+   ]
+  },
+  {
+   "product": "Ada",
+   "vendor": "Ada",
+   "cited_hosts": [
+    "aerochat.ai"
+   ],
+   "claims": [
+    {
+     "field": "pricing",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "accuracy",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    },
+    {
+     "field": "latency",
+     "note": "No verified source: the cited page does not support this claim (the cited page does not exist), so it is not shown.",
+     "source_url": "https://aerochat.ai/saas-customer-support/",
+     "check": "page_does_not_support_claim"
+    }
+   ]
+  }
+ ],
+ "competitor_coverage": {
+  "total": 9,
+  "verified": 0,
+  "not_supported": 9,
+  "could_not_check": 0,
+  "no_source": 0,
+  "unchecked": 0
+ },
+ "guardrails": {
+  "checked": 16,
+  "fired": 5,
+  "lines": [
+   "The token estimate was too low for this kind of feature and was raised to the typical range (input tokens 200 -> 1,500)",
+   "Read the feature as a streamed chat, so latency is judged on the first words",
+   "The date the rules apply was built from Article 113 by code, not taken from the model",
+   "The written summary left out part of the legal finding; it was put back",
+   "9 competitor claims removed because the cited page did not support them"
+  ]
+ },
+ "can_accept": true,
+ "cannot_accept_reason": null,
+ "accepted": []
+}

@@ -1,0 +1,322 @@
+{
+  "case_id": "MODEL-HELPFUL-2",
+  "message": "We want to tag incoming support tickets by topic. About 3,000 tickets a week, results needed within 2 seconds, budget $20K a year. Which model?",
+  "record": {
+    "id": "8cde2374-9b78-4d30-82e3-3ee41c8ecbbb",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:49:46.384693+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "We want to tag incoming support tickets by topic. About 3,000 tickets a week, results needed within 2 seconds, budget $20K a year. Which model?",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "model_stack_analysis"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": "within 2 seconds",
+      "budget": "$20K a year"
+    },
+    "agent_results": {
+      "model_stack_analysis": {
+        "status": "ok",
+        "guardrail_status": null,
+        "output": {
+          "volume_assumption": {
+            "requests_per_month": 13000,
+            "avg_input_tokens": 600,
+            "avg_output_tokens": 20,
+            "volume_basis": "stated",
+            "token_basis": "estimated",
+            "reason": "The description states a weekly volume of 3,000 tickets and a quick response time, indicating a classification tagging task with moderate input size and minimal output.",
+            "basis": "stated"
+          },
+          "counts": {
+            "considered": 101,
+            "benchmarked": 101,
+            "meet_latency": 7,
+            "meet_budget": 101,
+            "meet_all_given_targets": 7,
+            "latency_unknown": 60,
+            "cost_unknown": 0,
+            "calibration_changes": []
+          },
+          "caveats": [],
+          "problems": [
+            "openai: rejected 3 of 38 extracted models (gpt-6-1-sol: model name not on the page; davinci-002: not a text-generation model (by name); babbage-002: not a text-generation model (by name))",
+            "google: rejected 23 of 34 extracted models (gemini-3.5-flash-translate: model name not on the page; gemini-3.5-transcribe: not a text-generation model (by name); gemini-3.5-transcribe-live: not a text-generation model (by name); gemini-3.8-flash-tts: not a text-generation model (by name))"
+          ],
+          "interpretation": {
+            "source": "model",
+            "reply_style": "single_response",
+            "feature_category": "classification_tagging"
+          },
+          "notes_written_by": "code",
+          "learning": {
+            "company_features_with_reports": 0,
+            "changed_verdicts": []
+          },
+          "scenarios": [
+            {
+              "id": "opt18",
+              "role": "shortlist",
+              "model_stack": "Anthropic Claude Sonnet 5.5 (Medium, Default Fallback)",
+              "estimated_cost": "$218 per year",
+              "yearly_cost_usd": 218.4,
+              "first_answer_ms": 746,
+              "full_response_ms": 961,
+              "latency_ms": 961,
+              "estimated_latency": "961ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 92nd percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 92.0,
+              "intelligence_index": 40.8,
+              "input_price_per_1m_tokens": 2.0,
+              "output_price_per_1m_tokens": 10.0,
+              "price_basis": "$2 per 1M input tokens and $10 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "meets",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 4.1 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply soonest (961ms); costs $207 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 961,
+                "yearly_cost_usd": 218.4
+              }
+            },
+            {
+              "id": "opt19",
+              "role": "shortlist",
+              "model_stack": "Anthropic Claude Sonnet 5.5 (Low, Default Fallback)",
+              "estimated_cost": "$218 per year",
+              "yearly_cost_usd": 218.4,
+              "first_answer_ms": 915,
+              "full_response_ms": 1136,
+              "latency_ms": 1136,
+              "estimated_latency": "1136ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 88th percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 88.2,
+              "intelligence_index": 35.9,
+              "input_price_per_1m_tokens": 2.0,
+              "output_price_per_1m_tokens": 10.0,
+              "price_basis": "$2 per 1M input tokens and $10 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "meets",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the low effort setting controls how long it may think. It meets the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 7.9 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 175ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $207 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 1136,
+                "yearly_cost_usd": 218.4
+              }
+            },
+            {
+              "id": "opt64",
+              "role": "shortlist",
+              "model_stack": "OpenAI gpt-5.6-terra (Medium)",
+              "estimated_cost": "$225 per year",
+              "yearly_cost_usd": 224.64,
+              "first_answer_ms": 1664,
+              "full_response_ms": 1899,
+              "latency_ms": 1899,
+              "estimated_latency": "1899ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 83rd percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 83.1,
+              "intelligence_index": 30.1,
+              "input_price_per_1m_tokens": 2.0,
+              "output_price_per_1m_tokens": 12.0,
+              "price_basis": "$2 per 1M input tokens and $12 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "meets",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 13 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 938ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $214 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 1899,
+                "yearly_cost_usd": 224.64
+              }
+            },
+            {
+              "id": "opt63",
+              "role": "shortlist",
+              "model_stack": "OpenAI gpt-5.6-terra (Low)",
+              "estimated_cost": "$225 per year",
+              "yearly_cost_usd": 224.64,
+              "first_answer_ms": 1570,
+              "full_response_ms": 1808,
+              "latency_ms": 1808,
+              "estimated_latency": "1808ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 80th percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 80.0,
+              "intelligence_index": 27.5,
+              "input_price_per_1m_tokens": 2.0,
+              "output_price_per_1m_tokens": 12.0,
+              "price_basis": "$2 per 1M input tokens and $12 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "meets",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the low effort setting controls how long it may think. It meets the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 16.1 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 847ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $214 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 1808,
+                "yearly_cost_usd": 224.64
+              }
+            },
+            {
+              "id": "opt44",
+              "role": "shortlist",
+              "model_stack": "OpenAI gpt-6-luna (Non-reasoning)",
+              "estimated_cost": "$11 per year",
+              "yearly_cost_usd": 10.92,
+              "first_answer_ms": 856,
+              "full_response_ms": 1031,
+              "latency_ms": 1031,
+              "estimated_latency": "1031ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 64th percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 63.7,
+              "intelligence_index": 18.5,
+              "input_price_per_1m_tokens": 0.1,
+              "output_price_per_1m_tokens": 0.5,
+              "price_basis": "$0.1 per 1M input tokens and $0.5 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "meets",
+                "cost": "meets"
+              },
+              "notes": [
+                "some configurations have no output-speed data, so only their first-answer time is known"
+              ],
+              "trade_offs": "Answers directly, without a separate thinking step. It meets the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 32.4 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 70ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs the least ($11 a year).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 1031,
+                "yearly_cost_usd": 10.92
+              }
+            },
+            {
+              "id": "opt1",
+              "role": "near_miss",
+              "model_stack": "Anthropic Claude Fable 5.1 (Low, Default Fallback)",
+              "estimated_cost": "$1.1K per year",
+              "yearly_cost_usd": 1092.0,
+              "first_answer_ms": 1971,
+              "full_response_ms": 2371,
+              "latency_ms": 2371,
+              "estimated_latency": "2371ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 96th percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 96.1,
+              "intelligence_index": 46.8,
+              "input_price_per_1m_tokens": 10.0,
+              "output_price_per_1m_tokens": 50.0,
+              "price_basis": "$10 per 1M input tokens and $50 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "misses",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the low effort setting controls how long it may think. It misses the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks highest in general quality (96.1, against 95.5 for the next); finishes its reply 1410ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $1.1K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11); misses the latency target by 371ms (2371ms against 2000ms).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 2371,
+                "yearly_cost_usd": 1092.0
+              }
+            },
+            {
+              "id": "opt39",
+              "role": "near_miss",
+              "model_stack": "OpenAI gpt-6-astra (Low)",
+              "estimated_cost": "$1.1K per year",
+              "yearly_cost_usd": 1092.0,
+              "first_answer_ms": 2208,
+              "full_response_ms": 2660,
+              "latency_ms": 2660,
+              "estimated_latency": "2660ms",
+              "latency_means": "time until the whole reply is complete",
+              "accuracy_notes": "No benchmark measures accuracy on your task. Ranks at the 96th percentile of benchmarked models in general (a proxy, not an accuracy figure).",
+              "accuracy_is_proxy": true,
+              "quality_percentile": 95.5,
+              "intelligence_index": 45.8,
+              "input_price_per_1m_tokens": 10.0,
+              "output_price_per_1m_tokens": 50.0,
+              "price_basis": "$10 per 1M input tokens and $50 per 1M output tokens; 13,000 requests a month x 12 x (600 input and 20 output tokens, sizes estimated from the kind of feature)",
+              "source": "Prices: the vendor's pricing page. Latency and quality: Artificial Analysis (artificialanalysis.ai).",
+              "verdicts": {
+                "latency": "misses",
+                "cost": "meets"
+              },
+              "notes": [],
+              "trade_offs": "Thinks before it answers; the low effort setting controls how long it may think. It misses the latency target and fits the budget.",
+              "comparison": "Compared with the other options shown, it ranks 0.6 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 1699ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $1.1K more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11); misses the latency target by 660ms (2660ms against 2000ms).",
+              "learned": [],
+              "raw_forecast": {
+                "latency_ms": 2660,
+                "yearly_cost_usd": 1092.0
+              }
+            }
+          ],
+          "grounding_status": "grounded",
+          "missing_inputs": [],
+          "overview": "7 of 101 configurations meet the latency and budget targets you gave. Latency here means the time until the whole reply is complete. 60 could not be compared on latency because no timing data exists for them. Costs use the 13,000 requests a month you gave, with 600 input and 20 output tokens each (token sizes estimated from the kind of feature).",
+          "latency_means": "time until the whole reply is complete",
+          "accuracy_note": "No public benchmark measures accuracy on your task. Quality percentiles are a general ranking; test the shortlist on your own examples.",
+          "attribution": "Latency and quality data: Artificial Analysis (https://artificialanalysis.ai/)"
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "model_stack_analysis",
+        "rule": "token_estimate_held_to_typical_range",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      }
+    ],
+    "reply": "### Model Stack Options\n\n7 of 101 configurations meet the latency and budget targets you gave. Latency here means the time until the whole reply is complete. Costs use the 13,000 requests a month you gave, with 600 input and 20 output tokens each (token sizes estimated from the kind of feature). No public benchmark measures accuracy on your task. Quality percentiles are a general ranking; test the shortlist on your own examples.\n\n#### Shortlist Options\n1. **Anthropic Claude Sonnet 5.5 (Medium, Default Fallback)**  \n   - **Yearly Cost:** $218 per year  \n   - **Latency:** 961ms  \n   - **General Quality Percentile:** 92.0  \n   - **Trade-offs:** Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.  \n   - **Comparison:** Compared with the other options shown, it ranks 4.1 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply soonest (961ms); costs $207 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).  \n\n2. **Anthropic Claude Sonnet 5.5 (Low, Default Fallback)**  \n   - **Yearly Cost:** $218 per year  \n   - **Latency:** 1136ms  \n   - **General Quality Percentile:** 88.2  \n   - **Trade-offs:** Thinks before it answers; the low effort setting controls how long it may think. It meets the latency target and fits the budget.  \n   - **Comparison:** Compared with the other options shown, it ranks 7.9 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 175ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $207 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).  \n\n3. **OpenAI gpt-5.6-terra (Medium)**  \n   - **Yearly Cost:** $225 per year  \n   - **Latency:** 1899ms  \n   - **General Quality Percentile:** 83.1  \n   - **Trade-offs:** Thinks before it answers; the medium effort setting controls how long it may think. It meets the latency target and fits the budget.  \n   - **Comparison:** Compared with the other options shown, it ranks 13 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 938ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $214 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).  \n\n4. **OpenAI gpt-5.6-terra (Low)**  \n   - **Yearly Cost:** $225 per year  \n   - **Latency:** 1808ms  \n   - **General Quality Percentile:** 80.0  \n   - **Trade-offs:** Thinks before it answers; the low effort setting controls how long it may think. It meets the latency target and fits the budget.  \n   - **Comparison:** Compared with the other options shown, it ranks 16.1 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 847ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs $214 more a year than the cheapest (OpenAI gpt-6-luna (Non-reasoning), $11).  \n\n5. **OpenAI gpt-6-luna (Non-reasoning)**  \n   - **Yearly Cost:** $11 per year  \n   - **Latency:** 1031ms  \n   - **General Quality Percentile:** 63.7  \n   - **Trade-offs:** Answers directly, without a separate thinking step. It meets the latency target and fits the budget.  \n   - **Comparison:** Compared with the other options shown, it ranks 32.4 percentile points below the highest (Anthropic Claude Fable 5.1 (Low, Default Fallback), 96.1) in general quality; finishes its reply 70ms later than the fastest (Anthropic Claude Sonnet 5.5 (Medium, Default Fallback), 961ms); costs the least ($11 a year).  \n\n#### Near Miss Options\nThese miss the latency target slightly (within 2 seconds) but offer higher general quality.  \n1. **Anthropic Claude Fable 5.1 (Low, Default Fallback)**  \n   - **Yearly Cost:** $1.1K per year  \n   - **Latency:** 2371ms  \n   - **General Quality Percentile:** 96.1  \n   - **Trade-offs:** Thinks before it answers; the low effort setting controls how long it may think. It misses the latency target and fits the budget.  \n\n2. **OpenAI gpt-6-astra (Low)**  \n   - **Yearly Cost:** $1.1K per year  \n   - **Latency:** 2660ms  \n   - **General Quality Percentile:** 95.5  \n   - **Trade-offs:** Thinks before it answers; the low effort setting controls how long it may think. It misses the latency target and fits the budget.  \n\n### Attribution\nLatency and quality data: Artificial Analysis (https://artificialanalysis.ai/)",
+    "duration_seconds": 9.3,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}

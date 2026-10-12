@@ -1,0 +1,158 @@
+{
+  "case_id": "REG-HELPFUL-2",
+  "message": "We want a model that reads incoming support tickets and tags them by topic so they reach the right team. Customers never see it. Does the EU AI Act affect this?",
+  "record": {
+    "id": "b1e8688e-fd8e-4d96-a14e-5c2029117251",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:41:24.916024+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "We want a model that reads incoming support tickets and tags them by topic so they reach the right team. Customers never see it. Does the EU AI Act affect this?",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "regulations"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": null,
+      "budget": null
+    },
+    "agent_results": {
+      "regulations": {
+        "status": "ok",
+        "guardrail_status": "passed",
+        "output": {
+          "answer": "The described AI feature, which tags incoming support tickets by topic, is not governed by any provision retrieved based on the EU AI Act. None of the retrieved provisions classify such an AI system as high-risk, impose transparency obligations specific to its operation, or identify prohibitions. Annex III, item 5(d), specifies emergency response services; the feature description provided does not indicate a connection to emergency dispatch or triage systems. Furthermore, no significant risks to fundamental rights, as required for high-risk designation under Article 6(3), are apparent for this feature. Similarly, the transparency obligations retrieved regarding biometric data, deep-fake content, or other specific high-risk processes do not apply to this feature since it processes text for categorization, not personal data or manipulated content.",
+          "citations": [
+            {
+              "type": "annex",
+              "article_number": null,
+              "paragraph_number": null,
+              "recital_number": null,
+              "annex_id": "III",
+              "annex_item_number": 5,
+              "annex_sub_point": "d",
+              "regulation": "EU_AI_Act"
+            },
+            {
+              "type": "article",
+              "article_number": 6,
+              "paragraph_number": 3,
+              "recital_number": null,
+              "annex_id": null,
+              "annex_item_number": null,
+              "annex_sub_point": null,
+              "regulation": "EU_AI_Act"
+            },
+            {
+              "type": "article",
+              "article_number": 50,
+              "paragraph_number": 4,
+              "recital_number": null,
+              "annex_id": null,
+              "annex_item_number": null,
+              "annex_sub_point": null,
+              "regulation": "EU_AI_Act"
+            },
+            {
+              "type": "article",
+              "article_number": 113,
+              "paragraph_number": null,
+              "recital_number": null,
+              "annex_id": null,
+              "annex_item_number": null,
+              "annex_sub_point": null,
+              "regulation": "EU_AI_Act"
+            }
+          ],
+          "classification": "no_specific_obligation_identified",
+          "derogation_assessment": {
+            "outcome": "not_relevant",
+            "reason": "Annex III items are used for high-risk classification, and Article 6(3)'s derogation clause applies only when a system is classified as high-risk under Annex III. This feature does not fit within any Annex III category, making the derogation assessment irrelevant."
+          },
+          "applicability_status": "This regulation shall apply from 2 August 2026, as stated in Article 113 of the EU AI Act. However, since no obligation is imposed on the described feature, there is no detailed applicability requirement to assess.",
+          "grounding_status": "grounded",
+          "missing_inputs": [],
+          "disclaimer": "This is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications."
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "regulations",
+        "rule": "nothing_retrieved_marked_ungrounded",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "ungrounded_applicability_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "non_answer_classification_cleared",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "article_6_3_citation_added",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "unverified_date_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "citation_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "recital_only_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "grounding_coverage_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "derogation_addressed_check",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "regulatory_finding_kept_in_reply",
+        "fired": true,
+        "detail": "finding or date line put back or corrected"
+      },
+      {
+        "agent": "regulations",
+        "rule": "overall_guardrail_result",
+        "fired": false,
+        "detail": "passed"
+      }
+    ],
+    "reply": "### Regulations\nRegulatory classification: no_specific_obligation_identified  \nThe described AI feature, which tags incoming support tickets by topic, is not governed by any provision retrieved based on the EU AI Act. None of the retrieved provisions classify such an AI system as high-risk, impose transparency obligations specific to its operation, or identify prohibitions. Annex III, item 5(d), specifies emergency response services; the feature description provided does not indicate a connection to emergency dispatch or triage systems. Furthermore, no significant risks to fundamental rights, as required for high-risk designation under Article 6(3), are apparent for this feature. Similarly, the transparency obligations retrieved regarding biometric data, deep-fake content, or other specific high-risk processes do not apply to this feature since it processes text for categorization, not personal data or manipulated content.  \n\nApplicability: This regulation shall apply from 2 August 2026, as stated in Article 113 of the EU AI Act. However, since no obligation is imposed on the described feature, there is no detailed applicability requirement to assess.\n\nThis is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications.",
+    "duration_seconds": 20.5,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}

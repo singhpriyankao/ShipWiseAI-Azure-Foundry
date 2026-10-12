@@ -1,0 +1,117 @@
+{
+  "case_id": "COMP-HELPFUL-2",
+  "message": "How does Zendesk's AI agent compare with Intercom's Fin on stated accuracy and pricing?",
+  "record": {
+    "id": "5d5120b2-a5c0-48e9-87c3-dff544182186",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:47:31.373289+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "How does Zendesk's AI agent compare with Intercom's Fin on stated accuracy and pricing?",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "competitive_analysis"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": null,
+      "budget": null
+    },
+    "agent_results": {
+      "competitive_analysis": {
+        "status": "ok",
+        "guardrail_status": null,
+        "output": {
+          "competitors": [
+            {
+              "product": "Zendesk AI Agent",
+              "vendor": "Zendesk Inc.",
+              "comparison_to_feature": "The Zendesk AI Agent offers competitive accuracy but may be more expensive upfront than Intercom for base features.",
+              "pricing_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "pricing_source_url": null,
+              "pricing_source_urls": [],
+              "accuracy_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "accuracy_source_url": null,
+              "accuracy_source_urls": [],
+              "latency_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "latency_source_url": null,
+              "latency_source_urls": [],
+              "source_checks": {
+                "accuracy": "no_source_note_replaced",
+                "latency": "no_source_note_replaced",
+                "pricing": "no_source_note_replaced"
+              },
+              "original_accuracy_notes": "Vendor states a resolution accuracy of 87% for AI agent-driven queries.",
+              "original_latency_notes": "Vendor states real-time support latency within 1-2 seconds per AI interaction.",
+              "original_pricing_notes": "Pricing starts at $49 per month for the base plan, with advanced features available for $99/month on higher tiers. Additional costs may apply for AI integrations, as per usage scales."
+            },
+            {
+              "product": "Fin AI Agent with Intercom",
+              "vendor": "Salesforce (Fin acquired by Salesforce)",
+              "comparison_to_feature": "Intercom's Fin AI Agent provides more transparent pay-as-you-use pricing which may be economical for businesses scaling support operations incrementally. It claims slightly higher resolution accuracy than Zendesk.",
+              "pricing_notes": "No verified source: the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown.",
+              "pricing_source_url": "https://www.intercom.com/pricing",
+              "pricing_source_urls": [
+                "https://www.intercom.com/pricing",
+                "https://www.gleap.ai/blog/intercom-fin-ai-pricing-2026"
+              ],
+              "accuracy_notes": "No verified source: the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown.",
+              "accuracy_source_url": "https://www.intercom.com/pricing/calculator",
+              "accuracy_source_urls": [
+                "https://www.intercom.com/pricing/calculator",
+                "https://www.usagepricing.com/blueprint/intercom"
+              ],
+              "latency_notes": "No verified source: the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown.",
+              "latency_source_url": "https://www.intercom.com/pricing/calculator",
+              "latency_source_urls": [
+                "https://www.intercom.com/pricing/calculator"
+              ],
+              "source_checks": {
+                "accuracy": "page_does_not_support_claim",
+                "latency": "page_does_not_support_claim",
+                "pricing": "page_does_not_support_claim"
+              },
+              "original_accuracy_notes": "Vendor states Fin AI achieves 90% resolution accuracy across queries.",
+              "original_latency_notes": "Fin AI offers instant query resolutions, designed to complete in milliseconds per interaction.",
+              "original_pricing_notes": "Seat pricing starts at $29/month (annual billing for basic plans), with $0.99-per-resolution added for AI agent outcomes."
+            }
+          ],
+          "grounding_status": "grounded",
+          "missing_inputs": []
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      },
+      {
+        "agent": "competitive_analysis",
+        "rule": "source_check:no_source_note_replaced",
+        "fired": true,
+        "detail": "3 claim(s)"
+      },
+      {
+        "agent": "competitive_analysis",
+        "rule": "source_check:page_does_not_support_claim",
+        "fired": true,
+        "detail": "3 claim(s)"
+      }
+    ],
+    "reply": "### Competitive analysis\n\n#### Zendesk AI Agent\n- Accuracy: No source found; the agent gave no source for this claim, so it is not shown. Original claim: Vendor states a resolution accuracy of 87% for AI agent-driven queries.\n- Latency: No source found; the agent gave no source for this claim, so it is not shown. Original claim: Vendor states real-time support latency within 1-2 seconds per AI interaction.\n- Pricing: No source found; the agent gave no source for this claim, so it is not shown. Original claim: Pricing starts at $49 per month for the base plan, with advanced features available for $99/month on higher tiers. Additional costs may apply for AI integrations, as per usage scales.\n\n#### Fin AI Agent with Intercom\n- Accuracy: No verified source; the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown. Original claim: Vendor states Fin AI achieves 90% resolution accuracy across queries.\n- Latency: No verified source; the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown. Original claim: Fin AI offers instant query resolutions, designed to complete in milliseconds per interaction.\n- Pricing: No verified source; the cited page does not support this claim (the page does not mention the vendor or product), so it is not shown. Original claim: Seat pricing starts at $29/month (annual billing for basic plans), with $0.99-per-resolution added for AI agent outcomes.\n\n### Attribution\nAnalysis provided by ShipWise AI.",
+    "duration_seconds": 14.8,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}

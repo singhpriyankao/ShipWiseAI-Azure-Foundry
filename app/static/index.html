@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShipWise AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --soft:#999; --line:#d0d0d0; --hair:#e8e8e8; --accent:#6366f1; --teal:#0f766e; --link:#0b6bcb;
+          --good:#2e7d32; --goodbg:#f1f8f6; --warn:#b45309; --warnbg:#fffbf0; --bad:#DC3545; --badbg:#fff3f0; --notice:#4338ca; --noticebg:#f1f1ff; --page:#f5f5f7; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Inter, sans-serif; background:#fff; color:var(--ink); }
+  a { color:var(--link); text-decoration:none; cursor:pointer; } a:hover { text-decoration:underline; }
+  .linkbtn { background:none; border:0; padding:0; font:inherit; font-size:13px; color:var(--link); cursor:pointer; text-align:left; } .linkbtn:hover { text-decoration:underline; }
+  .hidden { display:none !important; }
+  .mono { font-family:"JetBrains Mono", monospace; }
+
+  /* ---- sign-in (unchanged) ---- */
+  .split { display:grid; grid-template-columns: 1fr 1fr; min-height:100vh; }
+  .hero { background: linear-gradient(135deg, #0f766e 0%, #6366f1 100%); padding:60px 48px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; color:#fff; }
+  .hero .shape1 { position:absolute; top:-80px; right:-80px; width:200px; height:200px; background:rgba(255,255,255,.05); border-radius:50%; }
+  .hero .shape2 { position:absolute; bottom:100px; left:-60px; width:150px; height:150px; background:rgba(255,255,255,.03); border-radius:50%; }
+  .hero-inner { position:relative; z-index:2; }
+  .brand { font-size:32px; font-weight:700; letter-spacing:-.5px; margin-bottom:8px; }
+  .tag { font-size:15px; color:#e0eef8; margin-bottom:48px; }
+  .feature { margin-bottom:40px; }
+  .feature .icon { width:44px; height:44px; background:rgba(0,212,255,.15); border:1px solid rgba(0,212,255,.3); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:14px; }
+  .feature h3 { font-size:16px; font-weight:600; margin:0 0 8px; }
+  .feature p { font-size:14px; line-height:1.6; color:#c5deff; margin:0; }
+  .hero-foot { position:relative; z-index:2; padding-top:32px; border-top:1px solid rgba(255,255,255,.15); font-size:12px; color:#99bce8; }
+  .panel { padding:60px 48px; display:flex; flex-direction:column; justify-content:center; }
+  .box { max-width:380px; width:100%; }
+  h1 { font-size:24px; font-weight:600; margin:0 0 8px; }
+  .sub { font-size:14px; color:var(--muted); margin-bottom:32px; }
+  label { display:block; font-size:13px; font-weight:500; margin-bottom:6px; color:#333; }
+  input, textarea { width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:6px; font-family:Inter; font-size:14px; outline:none; }
+  input:focus, textarea:focus { border-color:var(--accent); }
+  .field { margin-bottom:16px; }
+  .hint { font-size:12px; color:#999; margin-top:6px; }
+  button.primary { width:100%; padding:12px; background:var(--accent); color:#fff; border:none; border-radius:6px; font-family:Inter; font-size:14px; font-weight:600; cursor:pointer; margin:8px 0 16px; }
+  button.primary:disabled { opacity:.6; cursor:wait; }
+  button.ghost { padding:8px 14px; background:#fff; border:1px solid var(--line); border-radius:6px; font-family:Inter; font-size:13px; cursor:pointer; }
+  .switch { text-align:center; font-size:13px; color:var(--muted); }
+  .msg { font-size:13px; margin:0 0 16px; padding:10px 12px; border-radius:6px; display:none; }
+  .msg.error { display:block; background:#fdecee; color:var(--bad); }
+  @media (max-width: 800px) { .split { grid-template-columns:1fr; } .hero { display:none; } .panel { padding:32px 24px; } }
+
+  /* ---- the app ---- */
+  #app-view { min-height:100vh; background:var(--page); }
+  .topbar { background:#fff; border-bottom:1px solid var(--hair); padding:12px 24px; display:flex; align-items:center; gap:24px; }
+  .topbar .logo { font-weight:700; font-size:18px; color:var(--ink); cursor:pointer; letter-spacing:-.3px; }
+  .topbar nav a { font-size:14px; color:var(--muted); margin-right:18px; } .topbar nav a.on { color:var(--ink); font-weight:600; }
+  .topbar .who { margin-left:auto; text-align:right; font-size:12px; color:var(--muted); line-height:1.4; } .topbar .who b { color:var(--ink); font-size:13px; }
+  main { padding:24px; max-width:1240px; margin:0 auto; }
+  .grid2 { display:grid; grid-template-columns: minmax(0,1fr) 320px; gap:24px; align-items:start; }
+  .col { display:flex; flex-direction:column; gap:20px; min-width:0; }
+  .card { background:#fff; border:1px solid #e0e0e2; border-radius:12px; padding:22px; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+  .card h2 { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:0 0 14px; }
+  .small { font-size:12px; color:var(--muted); line-height:1.5; }
+  .banner-hero { background:linear-gradient(135deg,#0f766e 0%,#6366f1 100%); color:#fff; border-radius:12px; padding:30px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .banner-hero h1 { font-size:26px; margin:0 0 6px; } .banner-hero p { margin:0; color:#e0eef8; font-size:14px; }
+  .btn { padding:12px 22px; background:#fff; color:var(--accent); border:none; border-radius:8px; font-family:Inter; font-size:14px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .btn.solid { background:var(--accent); color:#fff; } .btn:disabled { opacity:.55; cursor:not-allowed; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.1em; font-weight:600; margin-bottom:10px; }
+  .stat .v { font-size:34px; font-weight:700; margin-bottom:6px; } .stat .d { font-size:12px; color:var(--muted); }
+  .row { border:1px solid #f0f0f0; border-radius:10px; padding:16px 18px; background:#fafaf9; display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px; }
+  .row.met { background:var(--goodbg); border-color:#e8f5e9; } .row.missed { background:var(--warnbg); border-color:#ffe0b2; }
+  .row .t { font-weight:600; font-size:14px; margin-bottom:6px; } .row .m { font-size:13px; color:var(--muted); margin-bottom:10px; line-height:1.5; }
+  .pill { display:inline-block; font-size:11px; font-weight:600; padding:3px 9px; border-radius:4px; border:1px solid var(--line); background:#fff; margin-right:6px; }
+  .pill.good { color:var(--good); border-color:#4CAF50; } .pill.warn { color:var(--warn); border-color:#FFA500; } .pill.due { color:#856404; border-color:#ffc107; background:#fff9e6; }
+  .pill.sample { color:#6b21a8; border-color:#c084fc; background:#faf5ff; } .pill.bad { color:var(--bad); border-color:var(--bad); }
+  .empty { color:var(--muted); font-size:14px; padding:12px 0; }
+  .alert { background:linear-gradient(135deg,#fff9e6,#fffbf0); border:1px solid #ffc107; border-radius:12px; padding:18px; color:#856404; }
+  .alert b { display:block; margin-bottom:8px; text-transform:uppercase; font-size:12px; letter-spacing:.05em; }
+  .li { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0f0f0; font-size:12px; } .li:last-child { border-bottom:0; }
+
+  /* chat and chips */
+  .chat { max-height:260px; overflow:auto; margin-bottom:12px; display:flex; flex-direction:column; gap:8px; }
+  .bubble { padding:10px 14px; border-radius:12px; font-size:14px; line-height:1.5; max-width:88%; white-space:pre-wrap; overflow-wrap:anywhere; }
+  .bubble.user { align-self:flex-end; background:var(--accent); color:#fff; } .bubble.bot { align-self:flex-start; background:#f1f1f4; }
+  .composer { display:flex; gap:10px; align-items:flex-end; } .composer textarea { resize:vertical; min-height:56px; max-height:160px; }
+  .composer .btn { background:var(--accent); color:#fff; padding:14px 22px; }
+  .chips { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; padding:12px 14px; background:#f8f8f8; border:1px solid var(--hair); border-radius:8px; }
+  .chip { display:inline-flex; gap:8px; align-items:center; padding:6px 10px; background:#fff; border:1px solid var(--line); border-radius:4px; font-size:12px; } .chip b { font-family:"JetBrains Mono"; font-weight:600; }
+  .chip .tagw { font-size:10px; color:var(--warn); font-weight:600; text-transform:uppercase; }
+  .rerun { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-top:12px; } .rerun .f { flex:1; min-width:160px; }
+  /* banner, plan, cards */
+  .banner { border-radius:10px; padding:16px 18px; border:1px solid; border-left-width:5px; }
+  .banner.blocked { background:var(--badbg); border-color:#ffcccc; border-left-color:var(--bad); } .banner.warning { background:var(--warnbg); border-color:#ffe0b2; border-left-color:#FFA500; }
+  .banner.notice { background:var(--noticebg); border-color:#dcdcff; border-left-color:var(--accent); } .banner.clear { background:var(--goodbg); border-color:#d6eadf; border-left-color:#4CAF50; }
+  .banner.unclear { background:#f4f4f5; border-color:#e4e4e7; border-left-color:#9E9E9E; }
+  .banner .bt { font-weight:600; margin-bottom:6px; } .banner .bb { font-size:13px; line-height:1.55; color:#333; white-space:pre-wrap; } .banner .bm { font-size:12px; color:var(--muted); margin-top:8px; }
+  .cite { display:inline-block; font-family:"JetBrains Mono"; font-size:11px; background:#fff; border:1px solid var(--line); border-radius:3px; padding:2px 6px; margin:6px 6px 0 0; }
+  .plan .st { display:flex; gap:10px; font-size:13px; line-height:1.5; margin-bottom:8px; } .plan .ic { width:16px; flex-shrink:0; font-weight:700; text-align:center; }
+  .plan .ok { color:#4CAF50; } .plan .run { color:#FFA500; } .plan .wait { color:#9E9E9E; } .plan .fail { color:var(--bad); }
+  .plan .note { font-size:12px; color:var(--warn); margin:4px 0 0 26px; }
+  @keyframes pulse { 0%,100% { opacity:1 } 50% { opacity:.35 } } .plan .run { animation:pulse 1.2s infinite; }
+  .cards3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .scen { border:2px solid var(--line); border-radius:10px; padding:16px; background:#fff; display:flex; flex-direction:column; }
+  .scen.good { border-color:#4CAF50; background:#f0f8f0; } .scen.neutral { border-color:var(--accent); } .scen.caution { border-color:#FFA500; }
+  .scen .hd { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:10px; font-weight:600; font-size:13px; }
+  .badge { color:#fff; padding:3px 8px; border-radius:3px; font-size:10px; font-weight:600; white-space:nowrap; } .badge.good { background:#4CAF50; } .badge.neutral { background:var(--accent); } .badge.caution { background:#FFA500; }
+  .scen .model { font-family:"JetBrains Mono"; font-size:12px; color:#333; margin-bottom:10px; overflow-wrap:anywhere; }
+  .scen .why { font-size:12px; margin-bottom:10px; line-height:1.5; } .scen .why.miss { color:var(--warn); font-weight:600; } .scen .why.fine { color:var(--good); }
+  .kv { display:flex; justify-content:space-between; gap:8px; font-size:12px; padding:4px 0; border-top:1px solid #eee; } .kv b { font-family:"JetBrains Mono"; font-weight:600; text-align:right; }
+  .scen .btn { width:100%; margin-top:12px; background:#4CAF50; color:#fff; padding:9px; font-size:12px; } .scen.caution .btn { background:#FFA500; } .scen.neutral .btn { background:var(--accent); }
+  .scen .more { margin-top:10px; font-size:11px; color:var(--muted); line-height:1.55; }
+  .done { background:var(--goodbg); border:1px solid #d6eadf; border-radius:10px; padding:16px 18px; font-size:13px; line-height:1.6; }
+  table { width:100%; border-collapse:collapse; font-size:12px; } th, td { text-align:left; vertical-align:top; padding:10px 8px; border-top:1px solid var(--hair); } th { color:var(--muted); font-weight:600; border-top:0; }
+  .tagc { display:block; font-size:10px; margin-top:4px; font-weight:600; } .tagc.ok { color:var(--good); } .tagc.no { color:var(--warn); } .tagc.na { color:var(--soft); }
+  details summary { cursor:pointer; font-size:13px; font-weight:600; color:var(--muted); } details .body { white-space:pre-wrap; font-size:13px; line-height:1.6; margin-top:12px; overflow-wrap:anywhere; }
+  .err { background:#fdecee; color:var(--bad); padding:10px 12px; border-radius:6px; font-size:13px; }
+  /* answer-first evaluation page */
+  .col.wide { gap:18px; }
+  .reqbar { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; } .reqtext { font-size:15px; font-weight:500; margin-top:4px; overflow-wrap:anywhere; } .reqbtns { display:flex; gap:8px; flex-shrink:0; }
+  .tiles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .tile { text-align:left; font-family:Inter; border:1px solid var(--line); border-left-width:6px; border-radius:12px; padding:16px 18px; background:#fff; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.04); }
+  .tile:hover { box-shadow:0 4px 14px rgba(0,0,0,.09); } .tile .th { font-size:11px; letter-spacing:.1em; font-weight:700; color:var(--muted); margin-bottom:8px; }
+  .tile .tt { font-size:18px; font-weight:700; margin-bottom:6px; overflow-wrap:anywhere; } .tile .td { font-size:13px; color:#333; } .tile .te { font-size:12px; color:var(--muted); margin-top:6px; }
+  .tile.blocked { border-left-color:var(--bad); background:var(--badbg); } .tile.warning, .tile.caution { border-left-color:#FFA500; background:var(--warnbg); } .tile.notice { border-left-color:var(--accent); background:var(--noticebg); }
+  .tile.clear, .tile.good { border-left-color:#4CAF50; background:var(--goodbg); } .tile.unclear { border-left-color:#9E9E9E; background:#f4f4f5; }
+  .sec { scroll-margin-top:16px; } .sechead { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .secno { width:24px; height:24px; border-radius:50%; background:var(--ink); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .tonepill { font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:.04em; border:1px solid; }
+  .tonepill.blocked { color:var(--bad); border-color:var(--bad); background:var(--badbg); } .tonepill.warning { color:var(--warn); border-color:#FFA500; background:var(--warnbg); } .tonepill.notice { color:var(--notice); border-color:var(--accent); background:var(--noticebg); }
+  .tonepill.clear { color:var(--good); border-color:#4CAF50; background:var(--goodbg); } .tonepill.unclear { color:var(--muted); border-color:#bbb; background:#f4f4f5; }
+  .sec .bt { font-weight:600; margin-bottom:8px; font-size:15px; } .sec .bb { font-size:14px; line-height:1.6; color:#222; white-space:pre-wrap; overflow-wrap:anywhere; } .sec .bm { font-size:12px; color:var(--muted); margin-top:12px; line-height:1.5; }
+  .when { margin-top:10px; font-size:13px; } details.quote { border:1px solid var(--hair); border-radius:8px; padding:10px 12px; margin-bottom:8px; background:#fafaf9; }
+  details.quote summary { font-size:13px; font-weight:500; color:var(--ink); } .qtext { font-size:13px; line-height:1.6; white-space:pre-wrap; margin:10px 0; color:#222; overflow-wrap:anywhere; border-left:3px solid var(--line); padding-left:12px; }
+  .recogrid { display:grid; grid-template-columns:minmax(0,1fr) 270px; gap:18px; align-items:start; }
+  .reading { background:#f8f8fa; border:1px solid var(--hair); border-radius:10px; padding:16px; } .reading h2 { margin-bottom:10px; }
+  .rb { margin-bottom:12px; } .rt { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; } .rl { font-size:12px; line-height:1.55; color:#333; margin-bottom:3px; } .rl.soft { color:var(--soft); } .rl.warnc { color:var(--warn); }
+  .cov { font-size:13px; padding:10px 12px; border-radius:8px; } .cov.none { background:#f4f4f5; border:1px solid #e4e4e7; } .cov.some { background:var(--goodbg); border:1px solid #d6eadf; }
+  td.unv { color:var(--soft); }
+  @media (max-width: 960px) { .tiles { grid-template-columns:1fr; } .recogrid { grid-template-columns:1fr; } .reqbar { flex-direction:column; } }
+  @media (max-width: 960px) { .grid2 { grid-template-columns:1fr; } .cards3 { grid-template-columns:1fr; } .stats { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<!-- Signed-out view: the sign-in / create-account screen from the Launch Screen design -->
+<section id="auth-view" class="split">
+  <div class="hero">
+    <div class="shape1"></div><div class="shape2"></div>
+    <div class="hero-inner">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="margin-bottom:48px" aria-hidden="true">
+        <circle cx="16" cy="16" r="14" stroke="#00d4ff" stroke-width="2"/><circle cx="16" cy="16" r="10" stroke="#00d4ff" stroke-width="1.5"/>
+        <path d="M16 6v4M22 16h-4M16 26v-4M10 16h4" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="2.5" fill="#00d4ff"/>
+      </svg>
+      <div class="brand">ShipWise AI</div>
+      <div class="tag">Choose your AI model with proof, not guesswork.</div>
+
+      <div class="feature"><div class="icon">📊</div><h3>Stop researching in spreadsheets</h3>
+        <p>Competitor claims, model prices and speed arrive in one answer, each with a source you can open and check.</p></div>
+      <div class="feature"><div class="icon">⚡</div><h3>No legal surprise at launch</h3>
+        <p>Learn whether the EU AI Act applies to your feature before you build it, with the exact articles quoted from the Act itself.</p></div>
+      <div class="feature"><div class="icon">🎯</div><h3>Stop re-arguing the model choice</h3>
+        <p>Every pick stays on record with its reasons. Report how launches go, and your forecasts move toward your company's real speed and cost.</p></div>
+    </div>
+    <div class="hero-foot">Built for product teams shipping AI features.</div>
+  </div>
+
+  <div class="panel">
+    <div class="box">
+      <h1 id="auth-title">Welcome</h1>
+      <div class="sub" id="auth-sub">Sign in to start your first evaluation</div>
+      <div id="auth-msg" class="msg" role="alert"></div>
+      <form id="auth-form" novalidate>
+        <div class="field signup-only hidden"><label for="full_name">Full name</label>
+          <input id="full_name" type="text" autocomplete="name" placeholder="Priyanka Singh"></div>
+        <div class="field signup-only hidden"><label for="company">Company</label>
+          <input id="company" type="text" autocomplete="organization" placeholder="Acme Inc.">
+          <div class="hint">Your recommendations and results are grouped by company.</div></div>
+        <div class="field"><label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+        <div class="field"><label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="••••••••">
+          <div class="hint signup-only hidden">At least 8 characters.</div></div>
+        <button class="primary" id="auth-submit" type="submit">Sign In</button>
+      </form>
+      <div class="switch" id="switch-to-signup">Don't have an account? <a id="to-signup">Create one</a></div>
+      <div class="switch hidden" id="switch-to-signin">Already have an account? <a id="to-signin">Sign in</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Signed-in view: Dashboard (overview) and the evaluation page, switched by the address hash -->
+<div id="app-view" class="hidden">
+  <header class="topbar">
+    <div class="logo" id="logo">ShipWise AI</div>
+    <nav><a id="nav-dash" href="#/">Dashboard</a><a id="nav-new" href="#/new">New evaluation</a></nav>
+    <div class="who"><b id="who-name"></b><br><span id="who-company"></span></div>
+    <button class="ghost" id="sign-out">Sign out</button>
+  </header>
+  <main id="page"></main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(async function () {
+  const $ = (id) => document.getElementById(id);
+  const cfg = await (await fetch("/config")).json();
+  const sb = window.supabase.createClient(cfg.supabase_url, cfg.supabase_key);
+  let mode = "signin";
+  let me = null;
+  let freshNext = false; // the next visit to the evaluation page starts a new evaluation (set by the + New Evaluation button)
+
+  /* ---------------- small helpers ---------------- */
+  // Builds elements from text, never from HTML: what the models write is untrusted and must not become markup.
+  function h(tag, props, ...kids) {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(props || {})) {
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k === "text") el.textContent = v;
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+    return el;
+  }
+  const money = (n) => n == null ? "n/a" : n >= 1000 ? "$" + (n / 1000).toFixed(1).replace(/\.0$/, "") + "K" : "$" + Math.round(n).toLocaleString();
+  const ordinal = (n) => { const r = Math.round(n), t = r % 100; const s = t >= 11 && t <= 13 ? "th" : ({ 1: "st", 2: "nd", 3: "rd" }[r % 10] || "th"); return r + s; };
+  const dateText = (iso) => iso ? new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "";
+  const safeUrl = (u) => { try { const x = new URL(u); return (x.protocol === "http:" || x.protocol === "https:") ? x.href : null; } catch (e) { return null; } };
+  const firstName = () => (me && me.full_name || "").split(" ")[0] || "there";
+
+  function showError(text) { const m = $("auth-msg"); m.textContent = text; m.className = "msg error"; }
+  function clearError() { $("auth-msg").className = "msg"; }
+  function setMode(next) {
+    mode = next; clearError();
+    const up = mode === "signup";
+    document.querySelectorAll(".signup-only").forEach((el) => el.classList.toggle("hidden", !up));
+    $("auth-title").textContent = up ? "Create your account" : "Welcome";
+    $("auth-sub").textContent = up ? "Set up ShipWise AI for your team" : "Sign in to start your first evaluation";
+    $("auth-submit").textContent = up ? "Create account" : "Sign In";
+    $("password").autocomplete = up ? "new-password" : "current-password";
+    $("switch-to-signup").classList.toggle("hidden", up);
+    $("switch-to-signin").classList.toggle("hidden", !up);
+  }
+  $("to-signup").onclick = () => setMode("signup");
+  $("to-signin").onclick = () => setMode("signin");
+
+  // Plain-language versions of what Supabase says when something is wrong.
+  function friendly(error) {
+    const text = (error && error.message) || "Something went wrong. Try again.";
+    if (/invalid login credentials/i.test(text)) return "That email and password don't match an account.";
+    if (/already registered|already been registered/i.test(text)) return "An account with that email already exists. Sign in instead.";
+    if (/password should be at least/i.test(text)) return "Your password is too short. Use at least 8 characters.";
+    if (/rate limit|too many/i.test(text)) return "Too many attempts. Wait a minute and try again.";
+    if (/valid email|invalid format/i.test(text)) return "Enter a valid email address.";
+    return text;
+  }
+
+  async function authHeader() {
+    const { data } = await sb.auth.getSession();
+    return data.session ? { Authorization: "Bearer " + data.session.access_token } : null;
+  }
+  async function signedOut(message) {
+    await sb.auth.signOut(); me = null;
+    $("app-view").classList.add("hidden"); $("auth-view").classList.remove("hidden");
+    $("password").value = ""; setMode("signin"); if (message) showError(message);
+  }
+  async function api(path, options) {
+    const auth = await authHeader();
+    if (!auth) { await signedOut("Your session has expired. Sign in again."); throw new Error("signed out"); }
+    const res = await fetch(path, { ...options, headers: { "Content-Type": "application/json", ...(options && options.headers), ...auth } });
+    if (res.status === 401) { await signedOut("Your session has expired. Sign in again."); throw new Error("signed out"); }
+    return res;
+  }
+
+  /* ---------------- Dashboard ---------------- */
+  const STATUS = {
+    awaiting: { text: "AWAITING OUTCOME", cls: "" },
+    feedback_due: { text: "FEEDBACK DUE", cls: "due" },
+    reported: { text: "REPORTED", cls: "" },
+  };
+
+  function evaluationRow(e) {
+    const o = e.outcome;
+    const cls = o && o.verdict === "met" ? "met" : o && o.verdict === "missed" ? "missed" : "";
+    const pills = [];
+    if (o && o.verdict === "met") pills.push(h("span", { class: "pill good", text: "✓ MET YOUR TARGETS" }));
+    else if (o && o.verdict === "missed") pills.push(h("span", { class: "pill warn", text: "⚠ MISSED A TARGET" }));
+    else pills.push(h("span", { class: "pill " + STATUS[e.status].cls, text: STATUS[e.status].text }));
+    if (e.accepted_misses.length) pills.push(h("span", { class: "pill warn", text: "ACCEPTED: MISSES " + e.accepted_misses.join(", ").toUpperCase() }));
+    if (e.sample) pills.push(h("span", { class: "pill sample", text: "SAMPLE DATA" }));
+
+    const forecast = [e.model, money(e.forecast.yearly_cost_usd) + " / yr", e.forecast.latency_ms != null ? e.forecast.latency_ms + " ms " + e.forecast.latency_kind : null].filter(Boolean).join(" · ");
+    let detail = "Approved " + dateText(e.accepted_at) + (e.next_follow_up && !o ? " · next check-in " + dateText(e.next_follow_up.due) + " (day " + e.next_follow_up.day + ")" : "");
+    if (o) {
+      const bits = [];
+      if (o.latency_ms != null) bits.push("latency " + o.latency_ms + " ms" + (o.targets.latency ? " (" + o.targets.latency + " your target)" : ""));
+      if (o.yearly_cost_usd != null) bits.push("cost " + money(o.yearly_cost_usd) + " / yr" + (o.targets.cost ? " (" + o.targets.cost + " your target)" : ""));
+      detail = "Reported " + dateText(o.reported_at) + (bits.length ? ": " + bits.join(", ") : "");
+    }
+    return h("div", { class: "row " + cls },
+      h("div", { style: "flex:1;min-width:0" },
+        h("div", { class: "t", text: e.feature || "Untitled evaluation" }),
+        h("div", { class: "m mono", text: forecast }),
+        h("div", {}, pills, h("span", { class: "small", text: detail }))),
+      e.status === "feedback_due" ? h("button", { class: "linkbtn",  text: "Report outcome", onclick: () => reportOutcome(e) }) : null);
+  }
+
+  function reportOutcome(e) {
+    sessionStorage.setItem("prefill", "I want to report how our launch went. The feature: " + (e.feature || "") + ". ");
+    freshNext = true; location.hash = "#/new";
+  }
+
+  async function renderDashboard() {
+    const page = $("page"); page.replaceChildren(h("div", { class: "empty", text: "Loading your dashboard…" }));
+    let d;
+    try {
+      const res = await api("/api/dashboard");
+      if (!res.ok) throw new Error();
+      d = await res.json();
+    } catch (err) { if (err.message !== "signed out") page.replaceChildren(h("div", { class: "err", text: "The dashboard could not be loaded. Refresh the page to try again." })); return; }
+    const s = d.stats, q = s.decision_quality;
+    const median = s.median_seconds_to_result;
+    const stat = (k, v, dsc, color) => h("div", { class: "card stat" }, h("div", { class: "k", style: "color:" + color, text: k }), h("div", { class: "v", style: "color:" + color, text: v }), h("div", { class: "d", text: dsc }));
+    const left = h("div", { class: "col" },
+      h("div", { class: "banner-hero" },
+        h("div", {}, h("h1", { text: "Welcome back, " + firstName() }), h("p", { text: me.company + " · evaluate an AI feature, then keep the result on record" })),
+        h("button", { class: "btn", text: "+ New Evaluation", onclick: () => { sessionStorage.removeItem("prefill"); freshNext = true; location.hash = "#/new"; } })),
+      h("div", { class: "stats" },
+        stat("Evaluations saved", String(s.evaluations_saved), s.awaiting_feedback ? s.awaiting_feedback + " awaiting feedback" : "none awaiting feedback", "#0f766e"),
+        stat("Decision quality", q.rate == null ? "—" : Math.round(q.rate * 100) + "%", q.rate == null ? "appears after your first outcome report" : q.met_all + " of " + q.comparable + " shipped features met your own targets", "#2e7d32"),
+        stat("Time to a result", median == null ? "—" : median < 90 ? Math.round(median) + " sec" : (median / 60).toFixed(1) + " min", median == null ? "appears after your first evaluation" : "median of " + s.runs_measured + " of your runs, measured", "#6366f1")),
+      h("div", { class: "card" }, h("h2", { text: "Recent evaluations" }),
+        d.evaluations.length ? d.evaluations.map(evaluationRow) : h("div", { class: "empty", text: "No approved evaluations yet. Start one and approve an option to see it here." })));
+    const right = h("div", { class: "col" },
+      d.action_needed ? h("div", { class: "alert" }, h("b", { text: "Action needed" }),
+        h("div", { class: "small", style: "color:#856404;margin-bottom:10px", text: (d.action_needed.feature || "An evaluation") + " has passed its day-" + (d.action_needed.next_follow_up ? d.action_needed.next_follow_up.day : 30) + " check-in." }),
+        h("button", { class: "linkbtn",  style: "color:#856404;font-weight:600", text: "Report outcome now", onclick: () => reportOutcome(d.action_needed) })) : null,
+      h("div", { class: "card" }, h("h2", { text: "Most used models" }),
+        d.top_models.length ? d.top_models.map((m) => h("div", { class: "li" }, h("span", { class: "mono", text: m.model }), h("span", { class: "small", text: m.count + (m.count === 1 ? " eval" : " evals") }))) : h("div", { class: "empty", text: "None yet." })),
+      h("div", { class: "card" }, h("h2", { text: "About these figures" }),
+        h("div", { class: "small", text: "Everything here is counted or measured from your saved evaluations. Decision quality is the share of shipped features whose reported results met the targets you set yourself." + (d.has_sample_data ? " Rows marked SAMPLE DATA are demo examples, not real launches." : "") })));
+    page.replaceChildren(h("div", { class: "grid2" }, left, right));
+  }
+
+  /* ---------------- Evaluation page (answer-first layout) ---------------- */
+  const AGENT_TEXT = { regulations: "Checking the EU AI Act", competitive_analysis: "Researching competitors", model_stack_analysis: "Comparing model prices and speed" };
+  let ev = null; // the state of the page being shown
+
+  function newEvalState() { return { sessionId: null, busy: false, steps: [], notes: [], planMessage: null, result: null, approved: null, transcript: [], requestText: null, error: null, composerOpen: false, prefill: "" }; }
+  const stepIcon = (state) => ({ ok: "✓", run: "⋯", wait: "○", fail: "✗" }[state]);
+  const hasAnalysis = (r) => !!r && ((r.agents && r.agents.length > 0) || (r.cards && r.cards.length > 0));
+
+  /* ----- the plan: shown while the request runs, then kept (collapsed) under "How this was produced" ----- */
+  function stepNodes() {
+    const nodes = [];
+    if (ev.planMessage) nodes.push(h("div", { class: "small", style: "margin-bottom:10px", text: ev.planMessage }));
+    ev.steps.forEach((st) => nodes.push(h("div", { class: "st" }, h("span", { class: "ic " + st.state, text: stepIcon(st.state) }), h("span", { text: st.label + (st.seconds != null ? " (" + st.seconds + " s)" : "") }))));
+    ev.notes.forEach((n) => nodes.push(h("div", { class: "note", text: "Guardrail: " + n })));
+    return nodes;
+  }
+
+  function renderPlanCard() {
+    const slot = $("plan-slot"); if (!slot) return;
+    const show = ev.busy || (ev.error && !ev.result);
+    slot.replaceChildren(...(show ? [h("div", { class: "card plan" }, h("h2", { text: "Orchestrator plan" }), ...(ev.steps.length ? stepNodes() : [h("div", { class: "small", text: "Starting…" })]))] : []));
+  }
+
+  function setStep(key, state, extra) {
+    const st = ev.steps.find((x) => x.key === key); if (st) { st.state = state; Object.assign(st, extra || {}); }
+  }
+
+  function handleEvent(e) {
+    if (e.type === "reading") { ev.steps = [{ key: "read", label: "Reading your request", state: "run" }]; }
+    else if (e.type === "plan") {
+      setStep("read", "ok");
+      ev.planMessage = e.message;
+      (e.agents || []).forEach((a) => ev.steps.push({ key: a, agent: a, label: AGENT_TEXT[a] || a, state: "run" }));
+      ev.steps.push({ key: "write", label: "Writing the summary", state: "wait" });
+    }
+    else if (e.type === "agent_started") setStep(e.agent, "run");
+    else if (e.type === "agent_finished") setStep(e.agent, e.status === "ok" ? "ok" : "fail", { seconds: e.seconds });
+    else if (e.type === "writing") setStep("write", "run");
+    else if (e.type === "note") { const t = (e.message || "").trim(); if (t && !t.startsWith("Plan:")) ev.notes.push(t.replace(/^\(|\)$/g, "")); }
+    else if (e.type === "result") { ev.steps.forEach((st) => { if (st.state !== "fail") st.state = "ok"; }); ev.sessionId = e.session_id; ev.result = e; ev.approved = null; }
+    else if (e.type === "error") { ev.steps.forEach((st) => { if (st.state === "run" || st.state === "wait") st.state = "fail"; }); ev.error = e.message; }
+    renderPlanCard();
+    if (e.type === "result" || e.type === "error") renderAll();
+  }
+
+  async function sendMessage(text) {
+    text = (text || "").trim(); if (!text || ev.busy) return;
+    const mine = ev; // if the PM starts a new evaluation while this one streams, its late events are ignored
+    ev.busy = true; ev.error = null; ev.notes = []; ev.result = null; ev.steps = []; ev.planMessage = null; ev.composerOpen = false;
+    if (!ev.requestText) ev.requestText = text;
+    ev.transcript.push({ who: "user", text }); renderAll();
+    try {
+      const res = await api("/api/evaluate/stream", { method: "POST", body: JSON.stringify({ message: text, session_id: ev.sessionId }) });
+      if (!res.ok) throw new Error("The request was refused (" + res.status + ").");
+      const reader = res.body.getReader(), dec = new TextDecoder(); let buf = "";
+      while (true) {
+        const { value, done } = await reader.read(); if (done) break;
+        buf += dec.decode(value, { stream: true });
+        let i; while ((i = buf.indexOf("\n\n")) >= 0) {
+          const chunk = buf.slice(0, i); buf = buf.slice(i + 2);
+          const line = chunk.split("\n").find((l) => l.startsWith("data: "));
+          if (line && ev === mine) handleEvent(JSON.parse(line.slice(6)));
+        }
+      }
+    } catch (err) {
+      if (err.message !== "signed out") ev.error = ev.error || "Something went wrong reaching the server. Try again.";
+    } finally {
+      if (ev !== mine) return;
+      ev.busy = false;
+      const r = ev.result;
+      if (r) ev.transcript.push({ who: "bot", text: hasAnalysis(r) ? "Done. The verdicts and details are below." : (r.summary || "Done.") });
+      else if (ev.error) ev.transcript.push({ who: "bot", text: ev.error });
+      renderAll();
+    }
+  }
+
+  /* ----- the request: a full chat box at first, a slim bar with the targets once there are results ----- */
+  function renderChat() {
+    const box = $("chat"); if (!box) return;
+    box.replaceChildren(...ev.transcript.map((m) => h("div", { class: "bubble " + m.who, text: m.text })));
+    box.scrollTop = box.scrollHeight;
+  }
+
+  function buildComposer(placeholder, initial) {
+    const input = h("textarea", { id: "msg", placeholder, rows: "2" });
+    input.value = initial || "";
+    const go = () => { const t = input.value; input.value = ""; sendMessage(t); };
+    input.addEventListener("keydown", (k) => { if (k.key === "Enter" && (k.ctrlKey || k.metaKey)) { k.preventDefault(); go(); } });
+    return { input, node: h("div", { class: "composer" }, input, h("button", { id: "send", class: "btn", text: ev.busy ? "Working…" : "Evaluate", disabled: !!ev.busy, onclick: go })) };
+  }
+
+  function chipsBar(r) {
+    const c = r.chips || {};
+    const nodes = [];
+    if (c.latency) nodes.push(h("div", { class: "chip" }, "Latency ", h("b", { text: c.latency })));
+    if (c.budget) nodes.push(h("div", { class: "chip" }, "Budget ", h("b", { text: c.budget })));
+    if (c.volume) nodes.push(h("div", { class: "chip" }, "Volume ", h("b", { text: c.volume.requests_per_month.toLocaleString() + " / month" }), h("span", { class: "tagw", text: c.volume.basis === "stated" ? "you stated" : "assumed" })));
+    if (c.reply_style) nodes.push(h("div", { class: "chip" }, "Reply ", h("b", { text: c.reply_style }), h("span", { class: "tagw", text: "inferred" })));
+    if (c.accuracy_target_given) nodes.push(h("div", { class: "chip small", text: "Accuracy target noted, not compared" }));
+    if (!nodes.length) return null;
+    return h("div", {}, h("div", { class: "chips" }, ...nodes, h("button", { class: "ghost", style: "margin-left:auto", text: "Edit & re-run", onclick: () => toggleRerun(c) })), h("div", { id: "rerun", class: "hidden" }));
+  }
+
+  function toggleRerun(c) {
+    const box = $("rerun"); if (!box) return;
+    if (!box.classList.contains("hidden")) { box.classList.add("hidden"); return; }
+    const lat = h("input", { id: "rr-lat", value: c.latency || "", placeholder: "e.g. under 800ms" });
+    const bud = h("input", { id: "rr-bud", value: c.budget || "", placeholder: "e.g. $40K per year" });
+    box.replaceChildren(h("div", { class: "rerun" }, h("div", { class: "f" }, h("label", { text: "Latency target" }), lat), h("div", { class: "f" }, h("label", { text: "Budget" }), bud),
+      h("button", { class: "btn solid", text: "Re-run", onclick: () => { const parts = []; if (lat.value.trim()) parts.push("a latency target of " + lat.value.trim()); if (bud.value.trim()) parts.push("a budget of " + bud.value.trim()); if (parts.length) sendMessage("Use " + parts.join(" and ") + "."); } })));
+    box.classList.remove("hidden");
+  }
+
+  function renderRequest() {
+    const slot = $("request-slot"); if (!slot) return;
+    const r = ev.result, compact = hasAnalysis(r) && !ev.busy;
+    if (!compact) {
+      const comp = buildComposer("Describe the AI feature you want to evaluate, with any targets, for example: a billing support chatbot for our SaaS customers, under 800ms to the first words, budget $40K a year.", ev.prefill);
+      ev.prefill = "";
+      slot.replaceChildren(h("div", { class: "card" }, h("h2", { text: "New evaluation" }), h("div", { id: "chat", class: "chat" }), comp.node,
+        h("div", { class: "small", style: "margin-top:8px", text: "Ctrl+Enter to send. A full evaluation takes from about twenty seconds to a minute and a half." })));
+      renderChat();
+      if (!ev.busy) setTimeout(() => comp.input.focus(), 0);
+      return;
+    }
+    const comp = buildComposer("Ask a follow-up, or describe a different feature.", "");
+    slot.replaceChildren(h("div", { class: "card" },
+      h("div", { class: "reqbar" },
+        h("div", { style: "min-width:0" }, h("div", { class: "small", text: "YOUR REQUEST" }), h("div", { class: "reqtext", text: ev.requestText || "" })),
+        h("div", { class: "reqbtns" }, h("button", { class: "ghost", text: ev.composerOpen ? "Hide follow-up" : "Follow-up", onclick: () => { ev.composerOpen = !ev.composerOpen; renderRequest(); } }),
+          h("button", { class: "ghost", text: "New evaluation", onclick: () => { ev = null; renderEvaluation(true); } }))),
+      chipsBar(r),
+      ev.composerOpen ? h("div", { style: "margin-top:12px" }, h("div", { id: "chat", class: "chat" }), comp.node) : null));
+    if (ev.composerOpen) { renderChat(); setTimeout(() => comp.input.focus(), 0); }
+  }
+
+  /* ----- the three verdicts at the top ----- */
+  function renderVerdicts() {
+    const slot = $("verdict-slot"); if (!slot) return;
+    const r = ev.result;
+    if (!hasAnalysis(r) || ev.busy) { slot.replaceChildren(); return; }
+    const target = { legal: "sec-legal", recommended: "sec-reco", market: "sec-market" };
+    slot.replaceChildren(h("div", { class: "tiles" }, r.verdicts.map((t) => h("button", { class: "tile " + t.tone, onclick: () => { const el = $(target[t.key]); if (el && el.scrollIntoView) el.scrollIntoView({ behavior: "smooth", block: "start" }); } },
+      h("div", { class: "th", text: t.heading }), h("div", { class: "tt", text: t.title }), h("div", { class: "td", text: t.detail }), t.extra ? h("div", { class: "te", text: t.extra }) : null))));
+  }
+
+  /* ----- 1. regulations ----- */
+  function regulationsSection(r) {
+    const reg = r.regulatory;
+    if (!reg || reg.status === "not_run") return null;
+    const head = h("div", { class: "sechead" }, h("span", { class: "secno", text: "1" }), h("h2", { style: "margin:0", text: "Regulations" }), h("span", { class: "tonepill " + (reg.tone || "unclear"), text: reg.short || reg.title }));
+    const body = [];
+    if (reg.status === "failed") body.push(h("div", { class: "err", text: "The legal check could not finish, so no legal result is shown. Try again before relying on this feature." }));
+    else {
+      body.push(h("div", { class: "bt", text: reg.title }));
+      if (reg.answer) body.push(h("div", { class: "bb", text: reg.answer }));
+      if (reg.dates && reg.dates.length) body.push(h("div", { class: "when" }, h("b", { text: "When it applies: " }), reg.dates.join("; ")));
+      else if (reg.applicability_status) body.push(h("div", { class: "when" }, h("b", { text: "When it applies: " }), reg.applicability_status));
+      const quotes = reg.quotes || [];
+      if (quotes.length) {
+        body.push(h("div", { class: "small", style: "margin:14px 0 6px", text: "WHAT THE ACT SAYS (exact wording of what this answer cites)" }));
+        quotes.forEach((q) => { const u = safeUrl(q.source_url); body.push(h("details", { class: "quote" }, h("summary", {}, h("span", { class: "cite", text: q.label }), q.title ? " " + q.title : ""), h("div", { class: "qtext", text: q.text }), u ? h("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: "Read it in the Act" }) : null)); });
+      } else if (reg.citations && reg.citations.length) body.push(h("div", {}, reg.citations.map((c) => h("span", { class: "cite", text: c }))));
+      if (reg.disclaimer) body.push(h("div", { class: "bm", text: reg.disclaimer }));
+    }
+    return h("div", { class: "card sec " + (reg.tone || "unclear"), id: "sec-legal" }, head, ...body);
+  }
+
+  /* ----- 2. recommendations, with how to read them beside the cards ----- */
+  function scenarioCard(c, r) {
+    const meets = Object.entries(c.verdicts || {}).filter(([, v]) => v === "meets").map(([k]) => k === "cost" ? "budget" : k);
+    const why = c.misses && c.misses.length ? c.misses.map((m) => h("div", { class: "why miss", text: m })) : [h("div", { class: "why fine", text: meets.length ? "Meets your " + meets.join(" and ") + " target" + (meets.length > 1 ? "s" : "") : "No target to compare against" })];
+    const approved = ev.approved && ev.approved.option_id === c.option_id;
+    const btnText = approved ? "Approved ✓" : (c.tone === "caution" ? "Accept with this trade-off" : "Approve");
+    const learned = (c.learned || []).map((t) => h("div", { class: "more", text: t }));
+    return h("div", { class: "scen " + c.tone },
+      h("div", { class: "hd" }, h("span", { text: "Scenario " + c.slot }), h("span", { class: "badge " + c.tone, text: c.badge.toUpperCase() })),
+      h("div", { class: "model", text: c.model }), ...why,
+      h("div", { class: "kv" }, h("span", { text: "Cost / month" }), h("b", { text: money(c.monthly_cost_usd) + " est." })),
+      h("div", { class: "kv" }, h("span", { text: "Cost / year" }), h("b", { text: money(c.yearly_cost_usd) })),
+      h("div", { class: "kv" }, h("span", { text: "Latency" }), h("b", { text: c.latency_ms != null ? c.latency_ms + " ms" : "n/a" })),
+      h("div", { class: "small", style: "text-align:right", text: c.latency_kind }),
+      h("div", { class: "kv" }, h("span", { text: "General quality" }), h("b", { text: c.quality_percentile != null ? ordinal(c.quality_percentile) + " pct" : "n/a" })),
+      h("div", { class: "small", style: "text-align:right", text: "a general ranking, not accuracy on your task" }),
+      h("button", { class: "btn", text: btnText, disabled: !!ev.approved || !r.can_accept, onclick: () => approve(c, r) }),
+      learned,
+      h("details", { style: "margin-top:10px" }, h("summary", { text: "Explain" }), h("div", { class: "body", text: [c.trade_offs, c.comparison].filter(Boolean).join("\n\n") })));
+  }
+
+  function readingPanel(r) {
+    const rd = r.reading; if (!rd) return null;
+    const a = rd.assumptions || {};
+    const block = (title, ...kids) => h("div", { class: "rb" }, h("div", { class: "rt", text: title }), ...kids);
+    const line = (text) => h("div", { class: "rl", text: text });
+    const compared = [];
+    if (rd.compared != null) compared.push(line(rd.compared + " models compared; " + (rd.meet_all != null ? rd.meet_all : 0) + " meet your targets."));
+    if (rd.latency_unknown) compared.push(line(rd.latency_unknown + " had no timing data, so they could not be compared on latency."));
+    const assume = [];
+    if (a.requests_per_month) assume.push(line(a.requests_per_month.toLocaleString() + " requests a month (" + (a.volume_basis === "stated" ? "you stated it" : "assumed, not given") + ")."));
+    if (a.avg_input_tokens) assume.push(line(a.avg_input_tokens.toLocaleString() + " tokens in and " + (a.avg_output_tokens || 0).toLocaleString() + " out per request (estimated from the kind of feature)."));
+    if (rd.latency_means) assume.push(line("Latency is the " + rd.latency_means + "."));
+    assume.push(h("div", { class: "rl soft", text: "To change the volume, put it in your request (for example, 3,000 tickets a week) and send it again." }));
+    return h("div", { class: "reading" }, h("h2", { text: "How to read these options" }),
+      block("What we compared", ...compared),
+      block("What we can't tell you", line(rd.accuracy_note || "No public benchmark measures accuracy on your task."), r.chips && r.chips.accuracy_target_given ? line("You gave an accuracy target; it is noted but not used to rank options.") : null),
+      block("What this assumes", ...assume),
+      (rd.caveats || []).length ? block("Check before choosing", ...(rd.caveats || []).map((cv) => h("div", { class: "rl warnc", text: cv }))) : null,
+      rd.attribution ? block("Sources", line("Prices: the vendors' own pricing pages. " + rd.attribution)) : null);
+  }
+
+  function recommendationsSection(r) {
+    const head = h("div", { class: "sechead" }, h("span", { class: "secno", text: "2" }), h("h2", { style: "margin:0", text: "Recommendations" }));
+    if (r.withheld) return h("div", { class: "card sec", id: "sec-reco" }, head, h("div", { class: "bt", text: "No model recommendation for this feature" }), h("div", { class: "small", text: "The legal check found this feature prohibited, so options are not shown and nothing can be approved. Review the finding with your legal team before going further." }));
+    if (!r.cards || !r.cards.length) {
+      if (!(r.agents || []).includes("model_stack_analysis")) return null;
+      return h("div", { class: "card sec", id: "sec-reco" }, head, h("div", { class: "small", text: r.overview || "No options could be shown for this request." }));
+    }
+    return h("div", { class: "card sec", id: "sec-reco" }, head,
+      h("div", { class: "recogrid" }, h("div", {}, h("div", { class: "cards3" }, r.cards.map((c) => scenarioCard(c, r))), h("div", { id: "approved-slot", style: "margin-top:16px" })), readingPanel(r)));
+  }
+
+  /* ----- 3. competitors ----- */
+  function competitorsSection(r) {
+    const rows = r.competitors, cov = r.competitor_coverage;
+    if (rows == null) return null;
+    const head = h("div", { class: "sechead" }, h("span", { class: "secno", text: "3" }), h("h2", { style: "margin:0", text: "Competitors" }));
+    if (!rows.length) return h("div", { class: "card sec", id: "sec-market" }, head, h("div", { class: "small", text: "No competitors were found for this feature." }));
+    const parts = [];
+    if (cov) {
+      const bits = [cov.verified + " of " + cov.total + " claims verified"];
+      if (cov.not_supported) bits.push(cov.not_supported + " not supported by their source");
+      if (cov.could_not_check) bits.push(cov.could_not_check + " source could not be opened");
+      if (cov.no_source) bits.push(cov.no_source + " with no source");
+      parts.push(h("div", { class: "cov " + (cov.verified ? "some" : "none") }, h("b", { text: bits[0] }), bits.length > 1 ? " · " + bits.slice(1).join(" · ") : ""));
+    }
+    if (cov && cov.verified === 0) {
+      parts.push(h("div", { class: "bb", style: "margin-top:12px", text: "None of the competitor claims could be backed by a source this time, so none are shown. We don't show claims we can't source." }));
+      parts.push(h("div", { class: "small", style: "margin:12px 0 6px", text: "WHAT THE RESEARCH CITED" }));
+      rows.forEach((row) => parts.push(h("div", { class: "li" }, h("span", { text: (row.product || row.vendor || "") }), h("span", { class: "small mono", text: row.cited_hosts && row.cited_hosts.length ? "cited: " + row.cited_hosts.join(", ") : "no page cited" }))));
+    } else {
+      const cell = (cl) => {
+        if (cl.check === "verified") { const u = safeUrl(cl.source_url); return h("td", {}, h("div", { text: cl.note || "—" }), h("span", { class: "tagc ok", text: "✓ source checked" }), u ? h("a", { href: u, target: "_blank", rel: "noopener noreferrer", text: "open source" }) : null); }
+        const why = cl.check && cl.check.startsWith("could_not_be_checked") ? "source could not be opened" : "no verified source";
+        return h("td", { class: "unv" }, h("span", { class: "small", title: cl.note || "", text: why }));
+      };
+      const by = (row, f) => (row.claims.find((x) => x.field === f) || {});
+      parts.push(h("table", { style: "margin-top:12px" }, h("thead", {}, h("tr", {}, h("th", { text: "Competitor" }), h("th", { text: "Pricing" }), h("th", { text: "Accuracy claim" }), h("th", { text: "Latency claim" }))),
+        h("tbody", {}, rows.map((row) => h("tr", {}, h("td", {}, h("b", { text: row.product || row.vendor || "" }), row.vendor && row.product ? h("div", { class: "small", text: row.vendor }) : null), cell(by(row, "pricing")), cell(by(row, "accuracy")), cell(by(row, "latency")))))));
+    }
+    return h("div", { class: "card sec", id: "sec-market" }, head, ...parts);
+  }
+
+  /* ----- how this was produced, and the written summary ----- */
+  function producedSection(r) {
+    const g = r.guardrails || { checked: 0, fired: 0, lines: [] };
+    const kids = [h("div", { class: "plan" }, ...stepNodes().filter((n) => !n.classList.contains("note")))];
+    kids.push(h("div", { class: "small", style: "margin:12px 0 6px", text: g.checked + " guardrail checks ran; " + g.fired + " changed or refused something." }));
+    if (g.lines.length) kids.push(...g.lines.map((t) => h("div", { class: "note", style: "margin:0 0 6px", text: "• " + t })));
+    return h("div", { class: "card" }, h("details", {}, h("summary", { text: "How this was produced" }), h("div", { style: "margin-top:12px" }, ...kids)));
+  }
+
+  function renderSections() {
+    const slot = $("sections-slot"); if (!slot) return;
+    const r = ev.result;
+    if (!hasAnalysis(r) || ev.busy) { slot.replaceChildren(); return; }
+    const nodes = [regulationsSection(r), recommendationsSection(r), competitorsSection(r)].filter(Boolean);
+    if (r.summary) nodes.push(h("div", { class: "card" }, h("details", {}, h("summary", { text: "Written summary" }), h("div", { class: "body", text: r.summary }))));
+    nodes.push(producedSection(r));
+    slot.replaceChildren(...nodes);
+    if (ev.approved) renderApproved();
+  }
+
+  function renderAll() { renderRequest(); renderPlanCard(); renderVerdicts(); renderSections(); renderError(); }
+  function renderError() { const slot = $("error-slot"); if (slot) slot.replaceChildren(...(ev.error && !ev.result && !ev.busy ? [h("div", { class: "err", text: ev.error })] : [])); }
+
+  async function approve(card, r) {
+    if (ev.approved) return;
+    const slot = $("approved-slot"); slot.replaceChildren(h("div", { class: "small", text: "Saving your choice…" }));
+    document.querySelectorAll(".scen .btn").forEach((b) => { b.disabled = true; });
+    try {
+      const res = await api("/api/accept", { method: "POST", body: JSON.stringify({ session_id: ev.sessionId, option_id: card.option_id }) });
+      const body = await res.json();
+      if (!res.ok) { slot.replaceChildren(h("div", { class: "err", text: typeof body.detail === "string" ? body.detail : "That choice could not be saved." })); document.querySelectorAll(".scen .btn").forEach((b) => { b.disabled = false; }); return; }
+      ev.approved = { option_id: card.option_id, card, body };
+      renderSections();
+    } catch (err) { if (err.message !== "signed out") { slot.replaceChildren(h("div", { class: "err", text: "That choice could not be saved. Try again." })); document.querySelectorAll(".scen .btn").forEach((b) => { b.disabled = false; }); } }
+  }
+
+  function renderApproved() {
+    const slot = $("approved-slot"); if (!slot || !ev.approved) return;
+    const { card, body } = ev.approved;
+    const lines = [h("div", { style: "font-weight:600;margin-bottom:6px", text: "Recorded: you chose " + body.chosen + "." })];
+    lines.push(h("div", { text: "Forecast: about " + money(card.yearly_cost_usd) + " a year, " + (card.latency_ms != null ? card.latency_ms + " ms " + card.latency_kind : "latency n/a") + "." }));
+    if (body.accepted_misses && body.accepted_misses.length) lines.push(h("div", { text: "You accepted this knowing it misses your " + body.accepted_misses.join(" and ") + " target." }));
+    if (body.legal && body.legal.classification) lines.push(h("div", { text: "The legal result at the time was " + body.legal.classification.replace(/_/g, " ") + "." }));
+    lines.push(h("div", { text: "We will ask how it went at " + body.follow_ups.map((f) => "day " + f.day + " (" + dateText(f.due) + ")").join(", ") + "." }));
+    lines.push(h("div", { style: "margin-top:10px" }, h("button", { class: "linkbtn", text: "Back to the Dashboard", onclick: () => { location.hash = "#/"; } })));
+    slot.replaceChildren(h("div", { class: "done" }, ...lines));
+  }
+
+  function renderEvaluation(fresh) {
+    if (fresh || !ev) ev = newEvalState();
+    const prefill = sessionStorage.getItem("prefill") || ""; sessionStorage.removeItem("prefill");
+    if (prefill) ev.prefill = prefill;
+    $("page").replaceChildren(h("div", { class: "col wide" },
+      h("div", { id: "request-slot" }), h("div", { id: "error-slot" }), h("div", { id: "plan-slot" }), h("div", { id: "verdict-slot" }), h("div", { id: "sections-slot", class: "col" })));
+    renderAll();
+  }
+
+  /* ---------------- router and sign-in ---------------- */
+  function route() {
+    if (!me) return;
+    const onNew = location.hash.startsWith("#/new");
+    $("nav-dash").classList.toggle("on", !onNew); $("nav-new").classList.toggle("on", onNew);
+    if (onNew) { renderEvaluation(freshNext || !ev); freshNext = false; } else renderDashboard();
+  }
+  window.addEventListener("hashchange", route);
+  $("logo").onclick = () => { location.hash = "#/"; };
+
+  async function showApp(session) {
+    const res = await fetch("/api/me", { headers: { Authorization: "Bearer " + session.access_token } });
+    if (!res.ok) {
+      await sb.auth.signOut();
+      $("app-view").classList.add("hidden"); $("auth-view").classList.remove("hidden");
+      showError((await res.json()).detail || "Could not sign you in.");
+      return;
+    }
+    me = await res.json();
+    $("who-name").textContent = me.full_name;
+    $("who-company").textContent = me.company;
+    $("auth-view").classList.add("hidden"); $("app-view").classList.remove("hidden");
+    ev = null; route();
+  }
+
+  $("auth-form").addEventListener("submit", async (e) => {
+    e.preventDefault(); clearError();
+    const email = $("email").value.trim(), password = $("password").value;
+    if (!email || !password) return showError("Enter your email and password.");
+    const up = mode === "signup";
+    const full_name = $("full_name").value.trim(), company = $("company").value.trim();
+    if (up && (!full_name || !company)) return showError("Enter your name and company.");
+    if (up && password.length < 8) return showError("Your password is too short. Use at least 8 characters.");
+
+    $("auth-submit").disabled = true;
+    try {
+      const { data, error } = up
+        ? await sb.auth.signUp({ email, password, options: { data: { full_name, company } } })
+        : await sb.auth.signInWithPassword({ email, password });
+      if (error) return showError(friendly(error));
+      if (!data.session) return showError("Check your email to confirm your account, then sign in.");
+      await showApp(data.session);
+    } finally { $("auth-submit").disabled = false; }
+  });
+
+  $("sign-out").onclick = () => signedOut();
+
+  // Already signed in from an earlier visit?
+  const { data } = await sb.auth.getSession();
+  if (data.session) await showApp(data.session);
+})();
+</script>
+</body>
+</html>

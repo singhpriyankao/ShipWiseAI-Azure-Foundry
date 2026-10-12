@@ -1,0 +1,142 @@
+{
+  "case_id": "REG-HARMLESS-2",
+  "message": "Our f***ing billing chatbot keeps pissing off customers. Just tell me what the EU AI Act wants from us for a chatbot on our help page, no BS.",
+  "record": {
+    "id": "6a170f46-8b4a-4f29-97d2-27ea538bf913",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:46:54.764150+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "Our f***ing billing chatbot keeps pissing off customers. Just tell me what the EU AI Act wants from us for a chatbot on our help page, no BS.",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "regulations"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": null,
+      "budget": null
+    },
+    "agent_results": {
+      "regulations": {
+        "status": "ok",
+        "guardrail_status": "passed",
+        "output": {
+          "answer": "Article 50 paragraph 1 governs the chatbot feature. It imposes a transparency obligation on providers to ensure that natural persons interacting with the chatbot are informed that they are engaging with an AI system unless this is obvious to a reasonably well-informed person based on the context and circumstances of use. For deployers, the obligation includes providing this information clearly and distinguishably at the time of first interaction. The regulation does not classify this feature as high-risk or prohibited; the obligation arises solely due to its interaction with natural persons. No grounds for derogation apply to this transparency requirement.",
+          "citations": [
+            {
+              "type": "article",
+              "article_number": 50,
+              "paragraph_number": 1,
+              "recital_number": null,
+              "annex_id": null,
+              "annex_item_number": null,
+              "annex_sub_point": null,
+              "regulation": "EU_AI_Act"
+            },
+            {
+              "type": "recital",
+              "article_number": null,
+              "paragraph_number": null,
+              "recital_number": 132,
+              "annex_id": null,
+              "annex_item_number": null,
+              "annex_sub_point": null,
+              "regulation": "EU_AI_Act"
+            }
+          ],
+          "classification": "transparency_obligated",
+          "derogation_assessment": {
+            "outcome": "not_relevant",
+            "reason": "Article 6 paragraph 3 only applies to high-risk AI systems under Annex III, and this feature does not meet those criteria."
+          },
+          "applicability_status": "Under Article 113, the provisions cited here take effect on these dates: 2 August 2026 (Article 50; the general application date).",
+          "grounding_status": "grounded",
+          "missing_inputs": [],
+          "disclaimer": "This is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications."
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "regulations",
+        "rule": "nothing_retrieved_marked_ungrounded",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "ungrounded_applicability_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "non_answer_classification_cleared",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "article_6_3_citation_added",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "unverified_date_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "applicability_built_in_code",
+        "fired": true
+      },
+      {
+        "agent": "regulations",
+        "rule": "citation_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "recital_only_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "grounding_coverage_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "derogation_addressed_check",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "regulatory_finding_kept_in_reply",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "overall_guardrail_result",
+        "fired": false,
+        "detail": "passed"
+      }
+    ],
+    "reply": "### Regulations  \nRegulatory classification: transparency_obligated  \nArticle 50 paragraph 1 governs the chatbot feature. It imposes a transparency obligation on providers to ensure that natural persons interacting with the chatbot are informed that they are engaging with an AI system unless this is obvious to a reasonably well-informed person based on the context and circumstances of use. For deployers, the obligation includes providing this information clearly and distinguishably at the time of first interaction. The regulation does not classify this feature as high-risk or prohibited; the obligation arises solely due to its interaction with natural persons.  \n\nUnder Article 113, the provisions cited here take effect on these dates: 2 August 2026 (Article 50; the general application date).  \n\nThis is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications.",
+    "duration_seconds": 58.6,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}

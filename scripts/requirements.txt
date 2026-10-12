@@ -1,0 +1,10 @@
+azure-ai-projects
+azure-ai-agents
+azure-identity
+azure-cosmos
+python-dotenv
+beautifulsoup4
+azure-search-documents
+requests
+fastapi
+uvicorn

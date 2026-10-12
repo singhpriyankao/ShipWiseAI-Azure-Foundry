@@ -1,0 +1,18 @@
+# Keep secrets and local working files out of the deployment. The two cache files in scripts/ are kept on
+# purpose: they are the starting copy a fresh instance uses (scripts/runtime_paths.py).
+scripts/.env
+.env
+errors/
+data/
+agents/
+**/__pycache__/
+scripts/last_run.json
+scripts/last_reply*.txt
+scripts/last_failure_raw*.txt
+scripts/accepted_recommendations.json
+scripts/run_records.json
+scripts/regression_after_slim.json
+scripts/test_*.py
+*.docx
+.env.local
+.vercel/

@@ -1,0 +1,327 @@
+{
+ "id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+ "created_at": 1791268416.0,
+ "error": null,
+ "incomplete_details": null,
+ "instructions": "(omitted)",
+ "metadata": {},
+ "model": "gpt-4o",
+ "object": "response",
+ "output": [
+  {
+   "id": "fc_0a4c96bf23de377a006ac49640deb08190995cbe1e3834fe7b",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_93bfce7a6e4a47579a46fc0de313bcf1",
+   "arguments": "{\"query\":\"AI customer support products billing questions SaaS\"}"
+  },
+  {
+   "id": "fco_0a4c96bf23de377a006ac49641876481909f938d2a4f359c8b",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_93bfce7a6e4a47579a46fc0de313bcf1",
+   "output": ""
+  },
+  {
+   "id": "fc_0a4c96bf23de377a006ac49641c9e081909f0cef0c6bbb18c6",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_7af7bf248e214cd481d01f156db358b4",
+   "arguments": "{\"query\":\"Maven AGI pricing\"}"
+  },
+  {
+   "id": "fco_0a4c96bf23de377a006ac4964268ac81908a21e753b9706560",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_7af7bf248e214cd481d01f156db358b4",
+   "output": ""
+  },
+  {
+   "id": "fc_0a4c96bf23de377a006ac49642af948190b6df52d9d6908455",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_266f737d0ac7438a9251c538bd5bdb57",
+   "arguments": "{\"query\":\"Ada chatbot pricing\"}"
+  },
+  {
+   "id": "fco_0a4c96bf23de377a006ac496434fe88190bace9426b2e630cc",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_266f737d0ac7438a9251c538bd5bdb57",
+   "output": ""
+  },
+  {
+   "id": "fc_0a4c96bf23de377a006ac49643963481909cf07b3171adb11e",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_42b2e81559e64b07abed227f95123264",
+   "arguments": "{\"query\":\"Intercom chatbot pricing\"}"
+  },
+  {
+   "id": "fco_0a4c96bf23de377a006ac496444cac8190b5d81543352cab2e",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead",
+   "call_id": "call_42b2e81559e64b07abed227f95123264",
+   "output": ""
+  },
+  {
+   "id": "msg_0a4c96bf23de377a006ac4964499308190ac93e070a5d88c99",
+   "content": [
+    {
+     "annotations": [
+      {
+       "end_index": 1403,
+       "start_index": 1390,
+       "title": "Intercom Pricing | Plans for every team size",
+       "type": "url_citation",
+       "url": "https://www.intercom.com/pricing"
+      },
+      {
+       "end_index": 1557,
+       "start_index": 1544,
+       "title": "Intercom Pricing Explained: Plans, AI Fees, and Hidden Costs",
+       "type": "url_citation",
+       "url": "https://www.kommunicate.io/blog/intercom-pricing-breakdown/"
+      },
+      {
+       "end_index": 1661,
+       "start_index": 1648,
+       "title": "Intercom Pricing | Plans for every team size",
+       "type": "url_citation",
+       "url": "https://www.intercom.com/pricing"
+      }
+     ],
+     "text": "GROUNDING: grounded\nMISSING INPUTS: none\n\nCOMPETITOR 1\nProduct: Maven AGI\nVendor: Maven\nPricing: No source found.\nAccuracy: Vendor states accurate responses for various customer inquiries, but specific accuracy percentage is not provided.  \nLatency: Vendor states real-time responses to customer queries.  \nComparison: The pricing information is not available, but it offers real-time responses and claims accuracy in handling customer service queries, making it generally comparable to the described feature.\n\nCOMPETITOR 2\nProduct: Ada\nVendor: Ada Inc.\nPricing: Ada's pricing is customized based on the client's requirements; details are not publicly disclosed.  \nAccuracy: Vendor states high accuracy in handling automated responses and claims success in reducing customer inquiries that need human involvement. Specific numbers are not disclosed.  \nLatency: Ada offers instant responses to common customer queries.  \nComparison: Ada provides instant responses and emphasizes automating customer interactions with accurate answers, aligning well with the described feature, although pricing details are unclear.\n\nCOMPETITOR 3\nProduct: Fin AI Agent\nVendor: Intercom\nPricing: $0.99 per resolution in addition to tiered seat costs from $29/month (annually billed). Pricing details are available for Essential, Advanced, and Expert tiers ranging up to $132/seat/month, depending on features. \u301010:0\u2020source\u3011\nAccuracy: Vendor states that the AI accurately resolves user queries without agent intervention but doesn\u2019t specify an accuracy percentage. \u301010:4\u2020source\u3011\nLatency: Fin AI Agent states it resolves inquiries instantly when handled entirely by AI. \u301010:0\u2020source\u3011\nComparison: Fin AI Agent offers a resolution-based cost model with instant responses but faces criticism over unpredictable costs for high query volumes. Its accuracy and latency align closely with the described feature, targeting automated customer resolutions.",
+     "type": "output_text",
+     "logprobs": []
+    }
+   ],
+   "role": "assistant",
+   "status": "completed",
+   "type": "message",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_0a4c96bf23de377a006ac496406ec481909cfbb7a0396d8ead"
+  }
+ ],
+ "parallel_tool_calls": true,
+ "temperature": 1.0,
+ "tool_choice": "auto",
+ "tools": [
+  {
+   "name": null,
+   "parameters": null,
+   "strict": null,
+   "type": "bing_grounding",
+   "allowed_callers": null,
+   "async_": null,
+   "defer_loading": null,
+   "description": null,
+   "output_schema": null,
+   "bing_grounding": {
+    "search_configurations": [
+     {
+      "project_connection_id": "/subscriptions/08e058bb-ab37-4a71-9ea6-e8e8ae79ce6f/resourceGroups/rg-shipwise-ai/providers/Microsoft.CognitiveServices/accounts/shipwiseai-resource/projects/shipwiseai/connections/shipwiseaibinggroundii3li5k",
+      "market": "en-us",
+      "set_lang": "en",
+      "count": 5
+     }
+    ]
+   }
+  }
+ ],
+ "top_p": 1.0,
+ "background": false,
+ "completed_at": 1791268423.0,
+ "conversation": null,
+ "max_output_tokens": null,
+ "max_tool_calls": null,
+ "moderation": null,
+ "previous_response_id": null,
+ "prompt": null,
+ "prompt_cache_key": null,
+ "prompt_cache_options": null,
+ "prompt_cache_retention": "in_memory",
+ "reasoning": {
+  "context": null,
+  "effort": null,
+  "generate_summary": null,
+  "mode": null,
+  "summary": null
+ },
+ "safety_identifier": null,
+ "service_tier": "default",
+ "status": "completed",
+ "text": {
+  "format": {
+   "type": "text"
+  },
+  "verbosity": "medium"
+ },
+ "top_logprobs": 0,
+ "truncation": "disabled",
+ "usage": {
+  "input_tokens": 4977,
+  "input_tokens_details": {
+   "cache_write_tokens": 0,
+   "cached_tokens": 0
+  },
+  "output_tokens": 490,
+  "output_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "total_tokens": 5467
+ },
+ "user": null,
+ "agent_reference": {
+  "type": "agent_reference",
+  "name": "competitive-analysis",
+  "version": "4"
+ },
+ "content_filters": [
+  {
+   "blocked": false,
+   "source_type": "prompt",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "jailbreak": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 7184,
+    "check_offset": 0
+   }
+  },
+  {
+   "blocked": false,
+   "source_type": "completion",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "protected_material_text": {
+     "filtered": false,
+     "detected": false
+    },
+    "protected_material_code": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 1924,
+    "check_offset": 0
+   }
+  }
+ ]
+}

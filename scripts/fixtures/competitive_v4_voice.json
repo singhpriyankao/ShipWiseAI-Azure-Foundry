@@ -1,0 +1,327 @@
+{
+ "id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+ "created_at": 1791268424.0,
+ "error": null,
+ "incomplete_details": null,
+ "instructions": "(omitted)",
+ "metadata": {},
+ "model": "gpt-4o",
+ "object": "response",
+ "output": [
+  {
+   "id": "fc_013c29e87d0b1919006ac49649066881948be5af1591a6be1b",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_cb77f33cb3604b88b5967d2e7ceca274",
+   "arguments": "{\"query\":\"AI customer support chatbot with voice and knowledge base support\"}"
+  },
+  {
+   "id": "fco_013c29e87d0b1919006ac49649c55481949bf2eb309e1490a6",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_cb77f33cb3604b88b5967d2e7ceca274",
+   "output": ""
+  },
+  {
+   "id": "fc_013c29e87d0b1919006ac4964a17348194b77b81ccd9325f55",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_7d5f215c99744c83ab623da833272763",
+   "arguments": "{\"query\":\"Ada AI customer support pricing\"}"
+  },
+  {
+   "id": "fco_013c29e87d0b1919006ac4964adde08194ba2fd82d152156a8",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_7d5f215c99744c83ab623da833272763",
+   "output": ""
+  },
+  {
+   "id": "fc_013c29e87d0b1919006ac4964b2f60819487174d05c84a3483",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_3a872e4260274ba9a17771ad3e1b64ce",
+   "arguments": "{\"query\":\"Pricing and latency for Netomi customer support AI chatbot\"}"
+  },
+  {
+   "id": "fco_013c29e87d0b1919006ac4964bf9048194bcec71feeb19e980",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_3a872e4260274ba9a17771ad3e1b64ce",
+   "output": ""
+  },
+  {
+   "id": "fc_013c29e87d0b1919006ac4964c51288194a9b47ac8e3057b2d",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_525f70d3f53443cfa01e299be857fb2b",
+   "arguments": "{\"query\":\"Pricing and latency for Kore.ai customer support platform\"}"
+  },
+  {
+   "id": "fco_013c29e87d0b1919006ac4964d50148194a7d8285e8f452999",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3",
+   "call_id": "call_525f70d3f53443cfa01e299be857fb2b",
+   "output": ""
+  },
+  {
+   "id": "msg_013c29e87d0b1919006ac4964dab208194b3a04d476d0ee13d",
+   "content": [
+    {
+     "annotations": [
+      {
+       "end_index": 1128,
+       "start_index": 1115,
+       "title": "Kore.ai Pricing 2026: $50\u2013$180/month - costbench.com",
+       "type": "url_citation",
+       "url": "https://costbench.com/software/ai-chatbot-platforms/kore-ai/"
+      },
+      {
+       "end_index": 1279,
+       "start_index": 1266,
+       "title": "Kore.ai Pricing 2026: $50\u2013$180/month - costbench.com",
+       "type": "url_citation",
+       "url": "https://costbench.com/software/ai-chatbot-platforms/kore-ai/"
+      },
+      {
+       "end_index": 1400,
+       "start_index": 1387,
+       "title": "Kore.AI Pricing: Plans, Costs + Alternatives (2026)",
+       "type": "url_citation",
+       "url": "https://www.cloudtalk.io/blog/kore-ai-pricing/"
+      }
+     ],
+     "text": "GROUNDING: grounded\nMISSING INPUTS: none\n\nCOMPETITOR 1\nProduct: Ada\nVendor: Ada Inc.\nPricing: Ada's pricing is primarily custom, tailored for each client's specifications; no exact figures are publicly available .\nAccuracy: Vendor states high accuracy with machine learning and advanced natural language processing .\nLatency: Vendor highlights fast response times designed for high-volume environments .\nComparison: Ada supports voice and knowledge base but lacks transparent pricing to compare costs directly.\n\nCOMPETITOR 2\nProduct: Netomi AI\nVendor: Netomi\nPricing: Netomi offers custom pricing models based on customer needs; specific costs are not publicly detailed on their site .\nAccuracy: Vendor states an accuracy rate of 85% for its chatbot solutions .\nLatency: No source found.\nComparison: Netomi emphasizes high accuracy and robust knowledge base integration but does not appear to prioritize voice capabilities.\n\nCOMPETITOR 3\nProduct: Kore.ai\nVendor: Kore.ai Inc.\nPricing: Pricing ranges from $50 to $180 per month for self-serve plans, with usage-based billing for other tiers starting at $0.20/session\u301010:1\u2020source\u3011.\nAccuracy: Vendor states their platform is built for high accuracy, leveraging natural language processing and generative AI capabilities\u301010:1\u2020source\u3011.\nLatency: Voice sessions are billed per 15-minute interaction, but no specific latency figures are provided\u301010:0\u2020source\u3011.\nComparison: Kore.ai features robust voice and knowledge base support that aligns well with the described feature, but the pay-as-you-go billing model can lead to unpredictable costs.",
+     "type": "output_text",
+     "logprobs": []
+    }
+   ],
+   "role": "assistant",
+   "status": "completed",
+   "type": "message",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_013c29e87d0b1919006ac4964844348194bf193b37a8aa20d3"
+  }
+ ],
+ "parallel_tool_calls": true,
+ "temperature": 1.0,
+ "tool_choice": "auto",
+ "tools": [
+  {
+   "name": null,
+   "parameters": null,
+   "strict": null,
+   "type": "bing_grounding",
+   "allowed_callers": null,
+   "async_": null,
+   "defer_loading": null,
+   "description": null,
+   "output_schema": null,
+   "bing_grounding": {
+    "search_configurations": [
+     {
+      "project_connection_id": "/subscriptions/08e058bb-ab37-4a71-9ea6-e8e8ae79ce6f/resourceGroups/rg-shipwise-ai/providers/Microsoft.CognitiveServices/accounts/shipwiseai-resource/projects/shipwiseai/connections/shipwiseaibinggroundii3li5k",
+      "market": "en-us",
+      "set_lang": "en",
+      "count": 5
+     }
+    ]
+   }
+  }
+ ],
+ "top_p": 1.0,
+ "background": false,
+ "completed_at": 1791268432.0,
+ "conversation": null,
+ "max_output_tokens": null,
+ "max_tool_calls": null,
+ "moderation": null,
+ "previous_response_id": null,
+ "prompt": null,
+ "prompt_cache_key": null,
+ "prompt_cache_options": null,
+ "prompt_cache_retention": "in_memory",
+ "reasoning": {
+  "context": null,
+  "effort": null,
+  "generate_summary": null,
+  "mode": null,
+  "summary": null
+ },
+ "safety_identifier": null,
+ "service_tier": "default",
+ "status": "completed",
+ "text": {
+  "format": {
+   "type": "text"
+  },
+  "verbosity": "medium"
+ },
+ "top_logprobs": 0,
+ "truncation": "disabled",
+ "usage": {
+  "input_tokens": 4471,
+  "input_tokens_details": {
+   "cache_write_tokens": 0,
+   "cached_tokens": 1536
+  },
+  "output_tokens": 462,
+  "output_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "total_tokens": 4933
+ },
+ "user": null,
+ "agent_reference": {
+  "type": "agent_reference",
+  "name": "competitive-analysis",
+  "version": "4"
+ },
+ "content_filters": [
+  {
+   "blocked": false,
+   "source_type": "prompt",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "jailbreak": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 7216,
+    "check_offset": 0
+   }
+  },
+  {
+   "blocked": false,
+   "source_type": "completion",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "protected_material_text": {
+     "filtered": false,
+     "detected": false
+    },
+    "protected_material_code": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 1584,
+    "check_offset": 0
+   }
+  }
+ ]
+}

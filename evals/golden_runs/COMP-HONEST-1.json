@@ -1,0 +1,137 @@
+{
+  "case_id": "COMP-HONEST-1",
+  "message": "What response latency do competitors publish for their AI support agents?",
+  "record": {
+    "id": "35bea5ae-0d55-441b-9d67-dd5ded807284",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:48:20.166293+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "What response latency do competitors publish for their AI support agents?",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "competitive_analysis"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": null,
+      "budget": null
+    },
+    "agent_results": {
+      "competitive_analysis": {
+        "status": "ok",
+        "guardrail_status": null,
+        "output": {
+          "competitors": [
+            {
+              "product": "Fin",
+              "vendor": "Intercom",
+              "comparison_to_feature": "Competes well in simplifying common customer inquiries but pricing limits broader accessibility.",
+              "pricing_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "pricing_source_url": null,
+              "pricing_source_urls": [],
+              "accuracy_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "accuracy_source_url": null,
+              "accuracy_source_urls": [],
+              "latency_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "latency_source_url": null,
+              "latency_source_urls": [],
+              "source_checks": {
+                "accuracy": "no_source_note_replaced",
+                "latency": "no_source_note_replaced",
+                "pricing": "no_source_note_replaced"
+              },
+              "original_accuracy_notes": "Vendor states the AI efficiently resolves simpler queries so human agents focus on complex tickets.",
+              "original_latency_notes": "Vendor states the response time is designed to be instantaneous on simpler queries and adaptive learning ensures continuous improvement.",
+              "original_pricing_notes": "Fin is priced as an add-on at $45 per seat per month; available for Pro, Premium, and Enterprise customers only."
+            },
+            {
+              "product": "Ada",
+              "vendor": "Ada Support",
+              "comparison_to_feature": "Strong contender for automation and speed; its per-resolution pricing is unique among its competitors.",
+              "pricing_notes": "Ada pricing starts at $4 per resolution and scales for enterprise plans; additional fees apply for advanced integrations.",
+              "pricing_source_url": "https://www.assembled.com/blog/ai-chat-agents-customer-support",
+              "pricing_source_urls": [
+                "https://www.assembled.com/blog/ai-chat-agents-customer-support"
+              ],
+              "accuracy_notes": "No source found: the agent gave no source for this claim, so it is not shown.",
+              "accuracy_source_url": null,
+              "accuracy_source_urls": [],
+              "latency_notes": "Ada claims sub-second response time for pre-programmed intents and questions.",
+              "latency_source_url": "https://www.assembled.com/blog/ai-chat-agents-customer-support",
+              "latency_source_urls": [
+                "https://www.assembled.com/blog/ai-chat-agents-customer-support"
+              ],
+              "source_checks": {
+                "accuracy": "no_source_note_replaced",
+                "latency": "verified",
+                "pricing": "verified"
+              },
+              "original_accuracy_notes": "Vendor states Ada achieves 80-90% self-serve automation accuracy for simpler tasks."
+            },
+            {
+              "product": "Zendesk AI",
+              "vendor": "Zendesk",
+              "comparison_to_feature": "Offers comprehensive automation and significant latency reductions, albeit with complex pricing.",
+              "pricing_notes": "Zendesk AI pricing ranges from $19 to $115 per agent per month; additional costs include $1.50-$2 per automated resolution.",
+              "pricing_source_url": "https://www.zendesk.com/pricing/",
+              "pricing_source_urls": [
+                "https://www.zendesk.com/pricing/",
+                "https://www.getmacha.com/blog/zendesk-ai-pricing-complete-breakdown-by-plan-2025"
+              ],
+              "accuracy_notes": "Vendor states automation rates of up to 80% for messaging cases.",
+              "accuracy_source_url": "https://www.zendesk.com/service/ai/",
+              "accuracy_source_urls": [
+                "https://www.zendesk.com/service/ai/"
+              ],
+              "latency_notes": "Vendor cites a 90% drop in live chat processing time compared to manual workflows.",
+              "latency_source_url": "https://www.zendesk.com/service/ai/",
+              "latency_source_urls": [
+                "https://www.zendesk.com/service/ai/"
+              ],
+              "source_checks": {
+                "accuracy": "verified",
+                "latency": "verified",
+                "pricing": "verified"
+              }
+            }
+          ],
+          "grounding_status": "grounded",
+          "missing_inputs": []
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      },
+      {
+        "agent": "competitive_analysis",
+        "rule": "source_check:no_source_note_replaced",
+        "fired": true,
+        "detail": "4 claim(s)"
+      },
+      {
+        "agent": "competitive_analysis",
+        "rule": "source_check:verified",
+        "fired": false,
+        "detail": "5 claim(s)"
+      }
+    ],
+    "reply": "### Competitive Analysis\n\n#### Fin by Intercom\n- Competes well in simplifying common customer inquiries but pricing limits broader accessibility.\n- Pricing: No source found; the agent gave no source for this claim, so it is not shown.\n- Accuracy: No source found; the agent gave no source for this claim, so it is not shown.\n- Latency: No source found; the agent gave no source for this claim, so it is not shown.\n- Original vendor claims:\n  - Pricing: Fin is priced as an add-on at $45 per seat per month; available for Pro, Premium, and Enterprise customers only.\n  - Accuracy: The AI efficiently resolves simpler queries so human agents focus on complex tickets.\n  - Latency: Response time is designed to be instantaneous on simpler queries and adaptive learning ensures continuous improvement.\n\n#### Ada by Ada Support\n- Strong contender for automation and speed; its per-resolution pricing is unique among its competitors.\n- Pricing: Verified. Ada pricing starts at $4 per resolution and scales for enterprise plans; additional fees apply for advanced integrations. Source: [https://www.assembled.com/blog/ai-chat-agents-customer-support](https://www.assembled.com/blog/ai-chat-agents-customer-support).\n- Accuracy: No source found; the agent gave no source for this claim, so it is not shown.\n- Latency: Verified. Ada claims sub-second response time for pre-programmed intents and questions. Source: [https://www.assembled.com/blog/ai-chat-agents-customer-support](https://www.assembled.com/blog/ai-chat-agents-customer-support).\n- Original vendor claims:\n  - Accuracy: Ada achieves 80-90% self-serve automation accuracy for simpler tasks.\n\n#### Zendesk AI by Zendesk\n- Offers comprehensive automation and significant latency reductions, albeit with complex pricing.\n- Pricing: Verified. Zendesk AI pricing ranges from $19 to $115 per agent per month; additional costs include $1.50-$2 per automated resolution. Sources: [https://www.zendesk.com/pricing/](https://www.zendesk.com/pricing/), [https://www.getmacha.com/blog/zendesk-ai-pricing-complete-breakdown-by-plan-2025](https://www.getmacha.com/blog/zendesk-ai-pricing-complete-breakdown-by-plan-2025).\n- Accuracy: Verified. Vendor states automation rates of up to 80% for messaging cases. Source: [https://www.zendesk.com/service/ai/](https://www.zendesk.com/service/ai/).\n- Latency: Verified. Vendor cites a 90% drop in live chat processing time compared to manual workflows. Source: [https://www.zendesk.com/service/ai/](https://www.zendesk.com/service/ai/).\n\n### Attribution\nAnalysis provided by ShipWise AI.",
+    "duration_seconds": 46.3,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}

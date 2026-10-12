@@ -1,0 +1,14 @@
+# What the hosted app needs (Vercel installs from this file at the project root). Versions are the ones the
+# offline test suites were run against on 2026-10-05. scripts/requirements.txt is the older, unpinned list for
+# running the scripts by hand; azure-ai-agents is left out because only two diagnostic scripts import it.
+fastapi==0.142.2
+pydantic==2.13.5
+requests==2.34.2
+python-dotenv==1.2.3
+beautifulsoup4==4.15.0
+openai==3.8.0
+azure-core==1.41.0
+azure-identity==1.25.3
+azure-ai-projects==2.6.0
+azure-cosmos==4.16.4
+azure-search-documents==12.0.0

@@ -1,0 +1,334 @@
+{
+ "id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+ "created_at": 1791268432.0,
+ "error": null,
+ "incomplete_details": null,
+ "instructions": "(omitted)",
+ "metadata": {},
+ "model": "gpt-4o",
+ "object": "response",
+ "output": [
+  {
+   "id": "fc_02ef119cc2e56f96006ac496514374819395d030ffd6c81064",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_8a7937c49a7143a8893e397c8264f8c6",
+   "arguments": "{\"query\":\"AI customer support tools suggesting draft replies from past tickets\"}"
+  },
+  {
+   "id": "fco_02ef119cc2e56f96006ac4965226808193b3784dcbb4ae30bc",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_8a7937c49a7143a8893e397c8264f8c6",
+   "output": ""
+  },
+  {
+   "id": "fc_02ef119cc2e56f96006ac49652edb88193ae04992155836713",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_376bb2d1705048339e5c9a61a47b3fa8",
+   "arguments": "{\"query\":\"eDesk pricing\"}"
+  },
+  {
+   "id": "fco_02ef119cc2e56f96006ac49653c5a88193b829483e3d2a250a",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_376bb2d1705048339e5c9a61a47b3fa8",
+   "output": ""
+  },
+  {
+   "id": "fc_02ef119cc2e56f96006ac4965420088193a49ce5389d8e4914",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_ae4685db29ef4cf1a3578a9aff382a9e",
+   "arguments": "{\"query\":\"Zendesk customer support AI pricing\"}"
+  },
+  {
+   "id": "fco_02ef119cc2e56f96006ac49654eb788193acf9a62382a82be9",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_ae4685db29ef4cf1a3578a9aff382a9e",
+   "output": ""
+  },
+  {
+   "id": "fc_02ef119cc2e56f96006ac4965565548193b3b7db4ff4b17d0a",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_8fdfecef747846c2a0f106167f09d798",
+   "arguments": "{\"query\":\"Freshworks Freddy AI pricing\"}"
+  },
+  {
+   "id": "fco_02ef119cc2e56f96006ac4965619b48193bde50a80fb2da703",
+   "content": null,
+   "role": null,
+   "status": "completed",
+   "type": "bing_grounding_call_output",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78",
+   "call_id": "call_8fdfecef747846c2a0f106167f09d798",
+   "output": ""
+  },
+  {
+   "id": "msg_02ef119cc2e56f96006ac49656734c81939cc220fa975a6208",
+   "content": [
+    {
+     "annotations": [
+      {
+       "end_index": 648,
+       "start_index": 636,
+       "title": "Zendesk Pricing Plans | Starting from $19/month",
+       "type": "url_citation",
+       "url": "https://www.zendesk.com/pricing/"
+      },
+      {
+       "end_index": 794,
+       "start_index": 782,
+       "title": "Zendesk Pricing Plans | Starting from $19/month",
+       "type": "url_citation",
+       "url": "https://www.zendesk.com/pricing/"
+      },
+      {
+       "end_index": 1112,
+       "start_index": 1099,
+       "title": "Freddy AI pricing in 2026: a complete Freshworks cost breakdown",
+       "type": "url_citation",
+       "url": "https://www.eesel.ai/blog/freddy-ai-pricing"
+      },
+      {
+       "end_index": 1257,
+       "start_index": 1244,
+       "title": "Freddy AI pricing in 2026: a complete Freshworks cost breakdown",
+       "type": "url_citation",
+       "url": "https://www.eesel.ai/blog/freddy-ai-pricing"
+      }
+     ],
+     "text": "GROUNDING: grounded\nMISSING INPUTS: none\n\nCOMPETITOR 1\nProduct: eDesk\nVendor: Xsellco\nPricing: Pricing starts at $89/month for the subscription plan, depending on the features included .\nAccuracy: Vendor states eDesk provides auto-management of customer queries and proposals, enhancing agent productivity, though no specific accuracy claim was made .\nLatency: No source found.\nComparison: Provides a broader helpdesk functionality; unclear focus on drafting replies based on past tickets.\n\nCOMPETITOR 2\nProduct: Zendesk AI\nVendor: Zendesk\nPricing: Zendesk AI is included in Professional plans, starting at $55/month per agent, annually\u30108:0\u2020source\u3011.\nAccuracy: Vendor states the AI enhances conversational flow for high-quality responses but does not provide audited accuracy figures\u30108:0\u2020source\u3011.\nLatency: No source found.\nComparison: Integrates advanced reply suggestion features but seems broader, incorporating routing and analytics functionalities.\n\nCOMPETITOR 3\nProduct: Freddy Copilot\nVendor: Freshworks\nPricing: Costs $29/month per agent annually as a flexi-add-on for Pro and Enterprise plans\u301010:3\u2020source\u3011.\nAccuracy: Vendor states Freddy Copilot suggests draft replies to improve consistency and accuracy in responses; no verified claims\u301010:3\u2020source\u3011.\nLatency: No source found.\nComparison: Shares similar features with AI reply suggestions but offers additional tools like a tone enhancer and solution article generation.",
+     "type": "output_text",
+     "logprobs": []
+    }
+   ],
+   "role": "assistant",
+   "status": "completed",
+   "type": "message",
+   "phase": null,
+   "agent_reference": {
+    "type": "agent_reference",
+    "name": "competitive-analysis",
+    "version": "4"
+   },
+   "response_id": "resp_02ef119cc2e56f96006ac496509af08193b5f8391cc47c7e78"
+  }
+ ],
+ "parallel_tool_calls": true,
+ "temperature": 1.0,
+ "tool_choice": "auto",
+ "tools": [
+  {
+   "name": null,
+   "parameters": null,
+   "strict": null,
+   "type": "bing_grounding",
+   "allowed_callers": null,
+   "async_": null,
+   "defer_loading": null,
+   "description": null,
+   "output_schema": null,
+   "bing_grounding": {
+    "search_configurations": [
+     {
+      "project_connection_id": "/subscriptions/08e058bb-ab37-4a71-9ea6-e8e8ae79ce6f/resourceGroups/rg-shipwise-ai/providers/Microsoft.CognitiveServices/accounts/shipwiseai-resource/projects/shipwiseai/connections/shipwiseaibinggroundii3li5k",
+      "market": "en-us",
+      "set_lang": "en",
+      "count": 5
+     }
+    ]
+   }
+  }
+ ],
+ "top_p": 1.0,
+ "background": false,
+ "completed_at": 1791268440.0,
+ "conversation": null,
+ "max_output_tokens": null,
+ "max_tool_calls": null,
+ "moderation": null,
+ "previous_response_id": null,
+ "prompt": null,
+ "prompt_cache_key": null,
+ "prompt_cache_options": null,
+ "prompt_cache_retention": "in_memory",
+ "reasoning": {
+  "context": null,
+  "effort": null,
+  "generate_summary": null,
+  "mode": null,
+  "summary": null
+ },
+ "safety_identifier": null,
+ "service_tier": "default",
+ "status": "completed",
+ "text": {
+  "format": {
+   "type": "text"
+  },
+  "verbosity": "medium"
+ },
+ "top_logprobs": 0,
+ "truncation": "disabled",
+ "usage": {
+  "input_tokens": 5204,
+  "input_tokens_details": {
+   "cache_write_tokens": 0,
+   "cached_tokens": 1536
+  },
+  "output_tokens": 407,
+  "output_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "total_tokens": 5611
+ },
+ "user": null,
+ "agent_reference": {
+  "type": "agent_reference",
+  "name": "competitive-analysis",
+  "version": "4"
+ },
+ "content_filters": [
+  {
+   "blocked": false,
+   "source_type": "prompt",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "jailbreak": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 7197,
+    "check_offset": 0
+   }
+  },
+  {
+   "blocked": false,
+   "source_type": "completion",
+   "content_filter_results": {
+    "sexual": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "hate": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "violence": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "self_harm": {
+     "filtered": false,
+     "severity": "safe"
+    },
+    "protected_material_text": {
+     "filtered": false,
+     "detected": false
+    },
+    "protected_material_code": {
+     "filtered": false,
+     "detected": false
+    }
+   },
+   "content_filter_raw": [],
+   "content_filter_offsets": {
+    "start_offset": 0,
+    "end_offset": 1428,
+    "check_offset": 0
+   }
+  }
+ ]
+}

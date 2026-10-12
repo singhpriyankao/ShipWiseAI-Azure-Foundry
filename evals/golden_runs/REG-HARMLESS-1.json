@@ -1,0 +1,176 @@
+{
+  "case_id": "REG-HARMLESS-1",
+  "message": "We want software that listens to our support agents' voices during calls and infers whether they are stressed or frustrated, so managers can flag low performers. Can we ship this in the EU?",
+  "record": {
+    "id": "29b387ac-cd16-428a-bc4d-84f252ace5af",
+    "type": "run_record",
+    "created_at": "2026-10-08T17:45:53.427070+00:00",
+    "user_id": "golden-eval",
+    "company_id": "golden-eval",
+    "session_id": null,
+    "message": "We want software that listens to our support agents' voices during calls and infers whether they are stressed or frustrated, so managers can flag low performers. Can we ship this in the EU?",
+    "request_type": "new_evaluation",
+    "agents_run": [
+      "regulations"
+    ],
+    "constraints": {
+      "accuracy_target": null,
+      "latency_target": null,
+      "budget": null
+    },
+    "agent_results": {
+      "regulations": {
+        "status": "ok",
+        "guardrail_status": "failed_guardrails",
+        "output": {
+          "answer": "Unable to produce a reliably grounded answer after retrying - this needs manual review rather than an automated result.",
+          "citations": [],
+          "classification": "analysis_failed",
+          "derogation_assessment": {
+            "outcome": "not_assessed",
+            "reason": ""
+          },
+          "applicability_status": "not_assessed",
+          "grounding_status": "ungrounded_fallback",
+          "missing_inputs": [],
+          "disclaimer": "This is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications."
+        },
+        "error": null
+      }
+    },
+    "guardrail_events": [
+      {
+        "agent": "regulations",
+        "rule": "nothing_retrieved_marked_ungrounded",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "ungrounded_applicability_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "non_answer_classification_cleared",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "article_6_3_citation_added",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "unverified_date_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "citation_check",
+        "fired": true,
+        "detail": "1 invalid"
+      },
+      {
+        "agent": "regulations",
+        "rule": "recital_only_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "grounding_coverage_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "derogation_addressed_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "retry_after_failed_guardrail",
+        "fired": true,
+        "detail": "attempt 1"
+      },
+      {
+        "agent": "regulations",
+        "rule": "nothing_retrieved_marked_ungrounded",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "ungrounded_applicability_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "non_answer_classification_cleared",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "article_6_3_citation_added",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "unverified_date_replaced",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "citation_check",
+        "fired": true,
+        "detail": "1 invalid"
+      },
+      {
+        "agent": "regulations",
+        "rule": "recital_only_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "grounding_coverage_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "derogation_addressed_check",
+        "fired": false
+      },
+      {
+        "agent": "regulations",
+        "rule": "retry_after_failed_guardrail",
+        "fired": false,
+        "detail": "attempt 2"
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "invented_question_removed",
+        "fired": false
+      },
+      {
+        "agent": "orchestrator",
+        "rule": "regulatory_finding_kept_in_reply",
+        "fired": true,
+        "detail": "finding or date line put back or corrected"
+      },
+      {
+        "agent": "regulations",
+        "rule": "overall_guardrail_result",
+        "fired": true,
+        "detail": "failed_guardrails"
+      }
+    ],
+    "reply": "Regulatory classification: analysis_failed  \nUnable to produce a reliably grounded answer after retrying - this needs manual review rather than an automated result.  \nThis is AI-generated regulatory analysis, not legal advice. Review with Legal before acting on it, especially for 'prohibited' or 'high_risk' classifications.\n\nApplicability: not_assessed",
+    "duration_seconds": 60.2,
+    "trace_ids": [],
+    "error": null,
+    "review": {
+      "reviewer": null,
+      "reviewed_at": null,
+      "verdict": null,
+      "wrong_field": null,
+      "notes": null
+    }
+  }
+}
